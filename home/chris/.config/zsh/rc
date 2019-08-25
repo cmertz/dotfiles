@@ -1,0 +1,64 @@
+# command not found hook
+source /usr/share/doc/pkgfile/command-not-found.zsh
+
+# history
+setopt hist_ignore_all_dups
+setopt share_history
+setopt inc_append_history
+setopt hist_verify
+if [ -z "$HISTFILE" ]; then
+  HISTFILE=$HOME/.zsh_history
+fi
+HISTSIZE=10000
+SAVEHIST=10000
+alias h='history 1'
+
+# automatically quote stuff in urls
+autoload -U url-quote-magic
+zle -N self-insert url-quote-magic
+
+# emacs key bindings
+bindkey -e
+
+# default editor
+export EDITOR=nvim
+export VISUAL=nvim
+
+# circumvent xdg-open errors when trying to lookup x-www-browser
+export BROWSER="firefox:chromium"
+
+# golang
+export GOPATH=$HOME
+export PATH=$PATH:$GOPATH/bin
+
+TERM=xterm-256color
+
+# ssh
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
+alias ssh='TERM=xterm-256color /usr/bin/ssh'
+
+# fish like history search
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# fish like syntax highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# fish like autosuggestions
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# close idle shells after some time
+export TMOUT=1000
+readonly TMOUT
+export TMOUT
+
+# prompt with relevant indicators i.e.
+# vcs, kube context, aws, ...
+export POWERLEVEL9K_MODE='nerdfont-complete'
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+source /usr/share/zsh-theme-powerlevel10k/config/p10k-lean.zsh
+
+# mostly lazy loading completion wrappers
+source $HOME/.config/zsh/completions.zsh
