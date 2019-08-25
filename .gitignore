@@ -1,0 +1,6 @@
+# ignore everythig by default
+#
+# if you want to add anything you'll need
+# to use `git add -f`
+
+*
