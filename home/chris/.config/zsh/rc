@@ -13,10 +13,6 @@ HISTSIZE=10000
 SAVEHIST=10000
 alias h='history 1'
 
-# automatically quote stuff in urls
-autoload -U url-quote-magic
-zle -N self-insert url-quote-magic
-
 # emacs key bindings
 bindkey -e
 
