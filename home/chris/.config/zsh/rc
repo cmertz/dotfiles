@@ -49,11 +49,6 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # fish like autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# close idle shells after some time
-export TMOUT=1000
-readonly TMOUT
-export TMOUT
-
 # prompt with relevant indicators i.e.
 # vcs, kube context, aws, ...
 export POWERLEVEL9K_MODE='nerdfont-complete'
