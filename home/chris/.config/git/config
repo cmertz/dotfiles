@@ -1,0 +1,26 @@
+[color]
+  diff = always
+  ui = auto
+[alias]
+  st = status
+  co = checkout
+[pull]
+  rebase = true
+[init]
+  templatedir = ~/.config/git/templates
+[commit]
+  verbose = 1
+  template = ~/.config/git/commit-message-template
+[filter "lfs"]
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+[diff "sopsdiffer"]
+  textconv = sops -d
+[diff]
+  tool = meld
+[merge]
+  tool = meld
+[difftool]
+  prompt = false

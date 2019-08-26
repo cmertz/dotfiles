@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# makes sure that a config value comes from a local
+# setting
+#
+# This forces the config to be set explicitly.
+#
+function check_conf() {
+  name=$1
+  for origin in system global
+  do
+    git config --$origin --get $name > /dev/null
+    if [[ $? -eq 0 ]]
+    then
+      echo "[pre-commit] git $name set in $origin config"
+      exit 1
+    fi
+  done
+
+  value=$(git config $name)
+  if [[ $? -ne 0 || -z "$value" ]]
+  then
+    echo "[pre-commit] git $name not set"
+    exit 2
+  fi
+}
+
+check_conf 'user.name'
+check_conf 'user.email'
