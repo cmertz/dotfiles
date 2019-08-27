@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+flags=''
+[[ `id -u` != 0 ]] && flags='--user'
+
+systemctl $flags daemon-reload && \
+systemctl $flags $@
