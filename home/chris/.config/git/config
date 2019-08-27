@@ -11,16 +11,18 @@
 [commit]
   verbose = 1
   template = ~/.config/git/commit-message-template
+
 [filter "lfs"]
   process = git-lfs filter-process
   required = true
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
-[diff "sopsdiffer"]
-  textconv = sops -d
-[diff]
-  tool = meld
-[merge]
-  tool = meld
+
 [difftool]
   prompt = false
+[diff]
+  tool = meld
+[difftool "meld"]
+  cmd = meld \"$LOCAL\" \"$REMOTE\"
+[diff "sopsdiffer"]
+  textconv = sops -d
