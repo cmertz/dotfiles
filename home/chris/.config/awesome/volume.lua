@@ -16,8 +16,10 @@ local icon = {
 
 local volumearc = wibox.widget {
   icon,
+  border_width = 0.3,
+  border_color = '#000000',
   max_value = 1,
-  thickness = 2,
+  thickness = 3,
   start_angle = 4.71238898, -- 2pi*3/4
   forced_height = 18,
   forced_width = 18,

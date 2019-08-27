@@ -78,7 +78,7 @@
       -- Create the wiboxbg_wibar
       --
       -- set nonsense bg to prevent it taking effect
-      mywibox[s] = awful.wibar({bg = beautiful.bg_wibar, position = 'top', screen = s })
+      mywibox[s] = awful.wibar({bg = beautiful.bg_wibar, position = 'top', screen = s , height = 20})
 
       -- Add widgets to the wibox
       mywibox[s]:setup {

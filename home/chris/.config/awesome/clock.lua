@@ -1,7 +1,7 @@
 local wibox = require("wibox")
 local awful = require("awful")
 
-local clock = wibox.widget.textclock('<span font="Monospace">%H:%M </span>')
+local clock = wibox.widget.textclock('<b><span font="Monospace" foreground="white">%H:%M </span></b>')
 
 local now = os.time()
 local timediff = os.difftime(now, os.time(os.date("!*t", now)))
