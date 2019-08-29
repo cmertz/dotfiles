@@ -27,8 +27,6 @@ export BROWSER="firefox:chromium"
 export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
 
-TERM=xterm-256color
-
 # ssh
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
 alias ssh='TERM=xterm-256color /usr/bin/ssh'
@@ -51,5 +49,11 @@ export POWERLEVEL9K_MODE='nerdfont-complete'
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/zsh-theme-powerlevel10k/config/p10k-lean.zsh
 
-# mostly lazy loading completion wrappers
-source $HOME/.config/zsh/completions.zsh
+# remove annoying menu selection
+setopt noautomenu
+
+# remove annoying autocorrect
+setopt nocorrect
+
+# auto sourcing of files
+source ${HOME}/.config/zsh/auto.zsh
