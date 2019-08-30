@@ -1,0 +1,11 @@
+[Unit]
+Description=Compton
+OnFailure=notify@%n
+
+[Service]
+ExecStart=/usr/bin/compton --config=${HOME}/.config/compton.conf
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target
