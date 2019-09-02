@@ -37,7 +37,7 @@ _auto_dir=${_auto_dir:-${HOME}/.config/zsh/auto}
 # proxy functions
 for auto in $(ls $_auto_dir -1 | sed "s#$_auto_dir/##g")
 do
-  if [[ $commands[$auto] == "" ]]
+  if [[ $command[$auto] == "" ]]
   then
     continue
   fi

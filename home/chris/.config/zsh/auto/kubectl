@@ -1,1 +1,1 @@
-source <(kubectl completion zsh)
+source <($command[kubectl] completion zsh)

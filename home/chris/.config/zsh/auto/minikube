@@ -1,1 +1,1 @@
-source <(minikube completion zsh)
+source <($command[minikube] completion zsh)
