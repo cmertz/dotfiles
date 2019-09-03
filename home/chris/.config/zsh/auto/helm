@@ -1,1 +1,1 @@
-source <($command[helm] completion zsh)
+source <($commands[helm] completion zsh)
