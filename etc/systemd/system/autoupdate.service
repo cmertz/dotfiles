@@ -1,0 +1,15 @@
+[Unit]
+  Description=Automatic Update
+  After=network-online.target
+
+# TODO do not try to update while on certain wifis (e.g. over mobile data)
+[Service]
+  Type=simple
+  # TODO update AUR packages as well using yay
+  ExecStart=/usr/bin/pacman -Syuq --noconfirm
+  TimeoutStopSec=180
+  KillMode=process
+  KillSignal=SIGINT
+
+[Install]
+  WantedBy=multi-user.target
