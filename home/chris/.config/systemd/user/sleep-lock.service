@@ -1,0 +1,12 @@
+[Unit]
+Description=Lock screen before sleep
+OnFailure=notify@%n
+
+[Service]
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/xss-lock -l /usr/local/lib/screenlock
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target
