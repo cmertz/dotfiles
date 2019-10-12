@@ -129,9 +129,9 @@
     awful.key({}, 'XF86AudioLowerVolume', function()   awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%") end, {description='lower volume', group='media'}),
     awful.key({}, 'XF86AudioMute', function() awful.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle") end, {description='toggle mute', group='media'}),
 
-    -- awful.key({}, 'XF86AudioPlay', mpd.toggle_play, {description='toggle music play/pause', group='media'}),
-    -- awful.key({}, 'XF86AudioNext', mpd.play_next, {description='play next song', group='media'}),
-    -- awful.key({}, 'XF86AudioPrev', mpd.play_prev, {description='play previous song', group='media'}),
+    awful.key({}, 'XF86AudioPlay', function() awful.spawn("playerctl play-pause") end, {description='toggle music play/pause', group='media'}),
+    awful.key({}, 'XF86AudioNext', function() awful.spawn("playerctl next") end, {description='play next song', group='media'}),
+    awful.key({}, 'XF86AudioPrev', function() awful.spawn("playerctl previous") end, {description='play previous song', group='media'}),
 
     awful.key({}, 'XF86MonBrightnessDown', function() awful.spawn('sudo backlight -10') end, {description='decrease backlight', group='screen'}),
     awful.key({}, 'XF86MonBrightnessUp', function() awful.spawn('sudo backlight +10') end, {description='increase backlight', group='screen'}),
