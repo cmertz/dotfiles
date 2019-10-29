@@ -1,0 +1,7 @@
+[Default Applications]
+application/x-bittorrent=magnet.desktop
+x-scheme-handler/magnet=magnet.desktop
+
+[Added Associations]
+application/pdf=chromium.desktop;
+text/plain=nvim.desktop;
