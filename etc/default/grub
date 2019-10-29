@@ -1,0 +1,11 @@
+GRUB_HIDDEN_TIMEOUT="0"
+GRUB_HIDDEN_TIMEOUT_QUIET="true"
+GRUB_DISTRIBUTOR="Arch"
+GRUB_TERMINAL_INPUT="console"
+# TODO standardize partlabels across installs
+GRUB_CMDLINE_LINUX="nmi_watchdog=0 cryptdevice=PARTLABEL=crypto-root:root root=/dev/mapper/root"
+GRUB_ENABLE_CRYPTODISK="y"
+GRUB_PRELOAD_MODULES="part_gpt"
+GRUB_GFXMODE="auto"
+GRUB_GFXPAYLOAD_LINUX="keep"
+GRUB_DISABLE_RECOVERY="true"
