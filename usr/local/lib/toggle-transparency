@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if systemctl --user is-active compton
+then
+  systemctl --user stop compton
+else
+  systemctl --user start compton
+fi
