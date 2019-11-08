@@ -22,7 +22,8 @@
   -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
   screen.connect_signal('property::geometry', set_wallpaper)
 
-  terminal = "/usr/bin/alacritty --live-config-reload --config-file=/home/chris/.config/alacritty/alacritty.yml"
+  local config_dir = gears.filesystem.get_xdg_config_home()
+  local terminal = "/usr/bin/alacritty --live-config-reload --config-file="..config_dir.."alacritty/alacritty.yml"
   modkey   = 'Mod4'
 
   package.path = package.path .. ';' .. conf_dir .. '?.lua;'
