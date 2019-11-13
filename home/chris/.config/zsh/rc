@@ -27,6 +27,9 @@ export BROWSER="firefox:chromium"
 export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
 
+# ruby
+export PATH=$PATH:$HOME/.gem/ruby/2.6.0/bin
+
 # ssh
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
 alias ssh='TERM=xterm-256color /usr/bin/ssh'
