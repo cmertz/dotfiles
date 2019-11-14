@@ -16,7 +16,5 @@ xset +dpms
 # set dpms times for standby, suspend and off
 xset dpms 600 600 600
 
-screenlayout apply
-
 rm -rf $HOME/.awesome.log
 exec /usr/bin/awesome 2>> $HOME/.awesome.log >> $HOME/.awesome.log
