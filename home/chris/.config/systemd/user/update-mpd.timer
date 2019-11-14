@@ -1,0 +1,10 @@
+[Unit]
+Description=mpd database update
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+RandomizedDelaySec=1h
+
+[Install]
+WantedBy=default.target

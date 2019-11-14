@@ -1,0 +1,8 @@
+[Unit]
+OnFailure=notify@%n
+
+[Service]
+ExecStart=/usr/bin/mpc update
+TimeoutStopSec=10min
+KillMode=process
+KillSignal=SIGINT
