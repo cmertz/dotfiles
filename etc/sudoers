@@ -1,0 +1,6 @@
+Defaults env_keep += "HOME"
+Defaults timestamp_type=ppid
+
+root ALL=(ALL) ALL
+
+#includedir /etc/sudoers.d
