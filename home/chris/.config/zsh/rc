@@ -30,8 +30,11 @@ export PATH=$PATH:$GOPATH/bin
 # ruby
 export PATH=$PATH:$HOME/.gem/ruby/2.6.0/bin
 
-# ssh
-export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
+# set ssh agent socket if it is not already set
+if [[ ! -v SSH_AUTH_SOCK ]]
+then
+  export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
+fi
 alias ssh='TERM=xterm-256color /usr/bin/ssh'
 
 # fish like history search
