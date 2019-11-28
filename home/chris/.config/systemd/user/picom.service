@@ -1,9 +1,9 @@
 [Unit]
-Description=Compton
+Description=Picom
 OnFailure=notify@%n
 
 [Service]
-ExecStart=/usr/bin/compton --config=${HOME}/.config/compton.conf
+ExecStart=/usr/bin/picom --config=${HOME}/.config/picom.conf
 Restart=always
 RestartSec=2
 
