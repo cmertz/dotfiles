@@ -1,11 +1,11 @@
 #!/bin/bash
 
-systemctl --user --quiet is-active compton
-compton_active=$?
+systemctl --user --quiet is-active picom
+picom_active=$?
 
-if [[ ${compton_active} == 0 ]]
+if [[ ${picom_active} == 0 ]]
 then
-  systemctl --user stop compton
+  systemctl --user stop picom
 fi
 
 mpc pause
@@ -20,7 +20,7 @@ fi
 
 wait ${slock_pid}
 
-if [[ ${compton_active} == 0 ]]
+if [[ ${picom_active} == 0 ]]
 then
-  systemctl --user start compton
+  systemctl --user start picom
 fi
