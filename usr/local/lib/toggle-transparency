@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-if systemctl --user is-active compton
+if systemctl --user is-active picom
 then
-  systemctl --user stop compton
+  systemctl --user stop picom
 else
-  systemctl --user start compton
+  systemctl --user start picom
 fi
