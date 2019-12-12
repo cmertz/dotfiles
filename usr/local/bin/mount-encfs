@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+for enc in $HOME/.sync/*
+do
+  dec="$HOME/$(basename $enc)"
+
+  if test -d $dec
+  then
+    encfs $enc $dec --extpass="/usr/bin/pass encfs/$(basename $enc)"
+  fi
+done
