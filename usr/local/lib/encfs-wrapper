@@ -1,3 +1,15 @@
 #!/usr/bin/env bash
 
-/usr/bin/encfs --extpass="/usr/bin/cat /home/chris/.config/encfs/$(basename $1)" $*
+# encfs wrapper script for `/etc/fstab` entries.
+
+# make sure the mounted filesystem is accessible
+# for users when mounted by root and vice versa
+flags=''
+if test `id -u` -eq 0
+then
+  flags='--public'
+else
+  flags='-o allow_root'
+fi
+
+/usr/bin/encfs $flags --extpass="/usr/bin/cat /home/chris/.config/encfs/$(basename $1)" $*
