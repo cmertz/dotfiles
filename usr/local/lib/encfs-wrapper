@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+/usr/bin/encfs --extpass="/usr/bin/cat /home/chris/.config/encfs/$(basename $1)" $*
