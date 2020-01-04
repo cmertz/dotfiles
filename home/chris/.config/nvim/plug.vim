@@ -39,5 +39,7 @@ Plug 'zchee/deoplete-go', {'do': 'make', 'for': 'go'}
 
 " terraform stuff
 Plug 'hashivim/vim-terraform', {'for': 'tf'}
+Plug 'vim-syntastic/syntastic', {'for': 'tf'}
+Plug 'juliosueiras/vim-terraform-completion', {'for': 'tf'}
 
 call plug#end()
