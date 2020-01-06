@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -e
+
+reflector --country 'Germany' --country 'France' --latest 10 --age 24 --sort rate --save /etc/pacman.d/mirrorlist
+rm -f /etc/pacman.d/mirrorlist.pacnew
