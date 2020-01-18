@@ -30,8 +30,6 @@
 
   local xkb      = require('xkb')
   local clock    = require('clock')
-  local volume_widget = require('volume')
-
 
   -- Create a wibox for each screen and add it
   mywibox = {}
@@ -97,13 +95,6 @@
               {
                 xkb.widget,
                 layout = wibox.container.margin,
-                left = 10
-              },
-              {
-                volume_widget,
-                layout = wibox.container.margin,
-                top = 2,
-                bottom = 2,
                 left = 10
               },
               {
