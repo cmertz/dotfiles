@@ -1,6 +1,8 @@
 Cmnd_Alias POWER = /usr/bin/systemctl poweroff, /usr/bin/systemctl reboot, /usr/bin/systemctl suspend
+Cmnd_Alias UPDATE = /usr/bin/pacman -Syyu --noconfirm, /usr/bin/yay -Syyu --noconfirm
 
 chris ALL=(ALL) ALL
 chris ALL=(root) NOPASSWD: POWER
+chris ALL=(root) NOPASSWD: UPDATE
 chris ALL=(root) NOPASSWD: /usr/local/bin/backlight -10
 chris ALL=(root) NOPASSWD: /usr/local/bin/backlight +10
