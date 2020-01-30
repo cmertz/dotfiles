@@ -20,6 +20,8 @@ fi
 
 wait ${slock_pid}
 
+systemctl --user restart pulseaudio
+
 if [[ ${picom_active} == 0 ]]
 then
   systemctl --user start picom
