@@ -28,7 +28,7 @@ export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
 
 # ruby
-export PATH=$PATH:$HOME/.gem/ruby/2.6.0/bin
+source /usr/share/chruby/chruby.sh
 
 # set ssh agent socket if it is not already set
 if [[ ! -v SSH_AUTH_SOCK ]]
