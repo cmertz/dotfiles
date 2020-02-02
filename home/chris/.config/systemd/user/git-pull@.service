@@ -1,0 +1,11 @@
+[Unit]
+OnFailure=notify@%n
+
+[Service]
+Type=oneshot
+WorkingDirectory=%I
+ExecStart=/usr/local/lib/git-pull
+TimeoutStopSec=10min
+KillMode=process
+KillSignal=SIGINT
+Environment=SSH_AUTH_SOCK="%t/gnupg/S.gpg-agent.ssh"

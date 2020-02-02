@@ -1,0 +1,10 @@
+[Unit]
+Description=pull git changes
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+RandomizedDelaySec=1h
+
+[Install]
+WantedBy=default.target
