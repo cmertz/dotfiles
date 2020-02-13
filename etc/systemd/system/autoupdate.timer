@@ -1,9 +1,11 @@
 [Unit]
-  Description=Automatic Update when booted up after 5 minutes then check the system for updates every 60 minutes
+  Description=Automatic Updates
+  After=network-online.target
+  Requires=network-online.target
 
 [Timer]
-  OnBootSec=5min
-  OnUnitActiveSec=60min
+  OnCalendar=weekly
+  Persistent=true
   Unit=autoupdate.service
 
 [Install]
