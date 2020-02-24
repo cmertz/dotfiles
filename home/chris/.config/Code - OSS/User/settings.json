@@ -4,5 +4,20 @@
     "go.useLanguageServer": true,
     "git.confirmSync": false,
     "editor.minimap.enabled": false,
-    "explorer.confirmDelete": false
+    "explorer.confirmDelete": false,
+    "terraform.indexing": {
+        "enabled": false,
+        "liveIndexing": false,
+        "delay": 500,
+        "exclude": [
+            ".terraform/**/*",
+            "**/.terraform/**/*"
+        ]
+    },
+    "terraform.languageServer": {
+        "enabled": true,
+        "args": []
+    },
+    "explorer.confirmDragAndDrop": false,
+    "files.trimTrailingWhitespace": true
 }
