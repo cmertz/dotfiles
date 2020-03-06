@@ -16,5 +16,5 @@ xset +dpms
 # set dpms times for standby, suspend and off
 xset dpms 600 600 600
 
-rm -rf $HOME/.awesome.log
-exec /usr/bin/awesome 2>> $HOME/.awesome.log >> $HOME/.awesome.log
+rm -rf $HOME/.i3.log
+exec /usr/bin/i3 >> $HOME/.i3.log
