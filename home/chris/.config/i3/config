@@ -7,8 +7,10 @@ font pango:monospace 8
 floating_modifier $mod
 
 exec --no-startup-id polybar top
-exec --no-startup-id gnome-pomodoro
 exec_always --no-startup-id feh --randomize --bg-fill /home/chris/wallpapers
+exec_always --no-startup-id gnome-pomodoro
+
+bindsym $mod+t [instance="gnome-pomodoro"] scratchpad show
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
@@ -16,6 +18,9 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 
 bindsym XF86MonBrightnessUp   exec --no-startup-id sudo /usr/local/bin/backlight +10
 bindsym XF86MonBrightnessDown exec --no-startup-id sudo /usr/local/bin/backlight -10
+
+bindsym $mod+n move  scratchpad
+bindsym $mod+Shift+n scratchpad show; floating disable
 
 bindsym $mod+Return exec alacritty
 bindsym $mod+r exec --no-startup-id i3-dmenu-desktop
