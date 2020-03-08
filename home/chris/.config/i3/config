@@ -19,6 +19,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86MonBrightnessUp   exec --no-startup-id sudo /usr/local/bin/backlight +10
 bindsym XF86MonBrightnessDown exec --no-startup-id sudo /usr/local/bin/backlight -10
 
+bindsym $mod+l exec --no-startup-id /usr/local/lib/screenlock
+
 bindsym $mod+n move  scratchpad
 bindsym $mod+Shift+n scratchpad show; floating disable
 
