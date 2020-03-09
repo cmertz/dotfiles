@@ -8,7 +8,6 @@ then
   systemctl --user stop picom
 fi
 
-mpc pause
 /usr/bin/pactl set-sink-mute @DEFAULT_SINK@ 1
 
 env -i DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} slock &
@@ -19,8 +18,6 @@ if [[ -e /dev/fd/${XSS_SLEEP_LOCK_FD:--1} ]]; then
 fi
 
 wait ${slock_pid}
-
-systemctl --user restart pulseaudio
 
 if [[ ${picom_active} == 0 ]]
 then
