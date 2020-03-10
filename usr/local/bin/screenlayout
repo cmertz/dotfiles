@@ -11,21 +11,11 @@ def fingerprint
   end)
 end
 
-def apply
-  fp = fingerprint
-  puts "applying layout for #{fp}"
-  system "/home/#{ENV['USER']}/.config/screenlayout/#{fp}.sh 2>&1"
-end
-
 case ARGV[0]
 when 'fingerprint', nil
   puts fingerprint
 when 'apply'
-  apply
-when 'set-default'
-  if !ARGV[1] || !File.exists?(ARGV[1])
-    raise "no valid path provided"
-  end
-
-  FileUtils.ln_s(ARGV[1], File.join(ENV['HOME'], ".config/screenlayout/#{fingerprint}.sh"), force: true)
+  fp = fingerprint
+  puts "applying layout for #{fp}"
+  system "/home/#{ENV['USER']}/.config/screenlayout/#{fp}.sh 2>&1"
 end
