@@ -7,7 +7,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 exec --no-startup-id polybar top
-exec_always --no-startup-id feh --randomize --bg-fill /home/chris/wallpapers
+exec_always --no-startup-id feh --randomize --bg-fill /home/chris/.sync/wallpapers
 exec_always --no-startup-id gnome-pomodoro
 
 bindsym $mod+t [instance="gnome-pomodoro"] scratchpad show
