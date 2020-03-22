@@ -14,7 +14,7 @@ exec_always --no-startup-id feh --randomize --bg-fill /home/chris/.sync/wallpape
 exec_always --no-startup-id systemctl --user start picom
 exec_always --no-startup-id systemctl --user start redshift-gtk
 
-bindsym $mod+t [instance="gnome-pomodoro"] scratchpad show
+bindsym $mod+t exec --no-startup-id /usr/local/lib/toggle-transparency
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
