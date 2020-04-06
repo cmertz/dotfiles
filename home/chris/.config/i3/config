@@ -21,15 +21,13 @@ bindsym XF86MonBrightnessUp   exec --no-startup-id sudo /usr/local/bin/backlight
 bindsym XF86MonBrightnessDown exec --no-startup-id sudo /usr/local/bin/backlight -10
 
 bindsym $mod+l exec --no-startup-id /usr/local/lib/screenlock
-bindsym $mod+Tab exec --no-startup-id /usr/bin/rofi -show window
 
 bindsym $mod+n move  scratchpad
 bindsym $mod+Shift+n scratchpad show; floating disable
 
 bindsym $mod+Return exec alacritty
 
-# TODO this may start multiple instances of the fzfmenu thing
-bindsym $mod+r exec --no-startup-id alacritty --class "fzfmenu" -e i3-dmenu-desktop --dmenu=fzf
+bindsym $mod+r exec --no-startup-id rofi -show drun
 
 bindsym $mod+Shift+q kill
 
