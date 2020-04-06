@@ -6,11 +6,8 @@ font pango:monospace 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# TODO move those to systemd units as well
-#      particularly the polybar for being able to restart it
-exec --no-startup-id polybar top
 exec_always --no-startup-id feh --randomize --bg-fill /home/chris/.sync/wallpapers
-
+exec_always --no-startup-id systemctl --user start polybar
 exec_always --no-startup-id systemctl --user start picom
 exec_always --no-startup-id systemctl --user start redshift-gtk
 
@@ -30,7 +27,10 @@ bindsym $mod+n move  scratchpad
 bindsym $mod+Shift+n scratchpad show; floating disable
 
 bindsym $mod+Return exec alacritty
-bindsym $mod+r exec --no-startup-id i3-dmenu-desktop
+
+# TODO this may start multiple instances of the fzfmenu thing
+bindsym $mod+r exec --no-startup-id alacritty --class "fzfmenu" -e i3-dmenu-desktop --dmenu=fzf
+
 bindsym $mod+Shift+q kill
 
 bindsym $mod+a focus left
@@ -90,6 +90,8 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym $mod+Shift+r restart
 
 for_window [class=".*"] border pixel 0
+
+for_window [instance="fzfmenu"] floating enable
 
 gaps inner 5
 smart_gaps on

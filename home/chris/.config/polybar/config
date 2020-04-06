@@ -1,3 +1,5 @@
+; TODO create one bar per compouter
+
 [colors]
 background = #5a000000
 foreground = #eee
