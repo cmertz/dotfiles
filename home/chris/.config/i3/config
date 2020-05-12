@@ -89,8 +89,6 @@ bindsym $mod+Shift+r restart
 
 for_window [class=".*"] border pixel 0
 
-for_window [instance="fzfmenu"] floating enable
-
 gaps inner 5
 smart_gaps on
 smart_borders on
