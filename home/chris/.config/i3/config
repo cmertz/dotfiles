@@ -6,7 +6,7 @@ font pango:monospace 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-exec_always --no-startup-id feh --randomize --bg-fill /home/chris/.sync/wallpapers
+exec_always --no-startup-id systemctl --user restart wallpaper
 exec_always --no-startup-id systemctl --user start polybar
 exec_always --no-startup-id systemctl --user start picom
 exec_always --no-startup-id systemctl --user start redshift-gtk
