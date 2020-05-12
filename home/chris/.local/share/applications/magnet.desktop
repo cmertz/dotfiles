@@ -7,3 +7,5 @@ Type=Application
 MimeType=application/x-bittorrent;x-scheme-handler/magnet;
 Categories=Network;FileTransfer;P2P;Qt;
 X-AppInstall-Keywords=torrent
+
+NoDisplay=true
