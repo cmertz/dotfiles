@@ -6,7 +6,8 @@ configuration {
   sidebar-mode:    true;
   matching: "fuzzy";
   modi: "drun,window";
-  sort: "fzf";
+  sort: true;
+  sorting-method: "fzf";
   tokenize: true;
 }
 
