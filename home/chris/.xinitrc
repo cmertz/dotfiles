@@ -16,7 +16,7 @@ xset +dpms
 # set dpms times for standby, suspend and off
 xset dpms 600 600 600
 
-$HOME/.config/screenlayout/default.sh || true
+$HOME/.config/screenlayout/default || true
 
 rm -rf $HOME/.i3.log
-exec /usr/bin/i3 >> $HOME/.i3.log
+exec /usr/bin/i3 &>> $HOME/.i3.log
