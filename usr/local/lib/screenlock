@@ -1,7 +1,12 @@
 #!/bin/bash
 
-systemctl --user --quiet is-active picom
-picom_active=$?
+set -o pipefail
+set -e
+
+if systemctl --user --quiet is-active picom
+then
+  picom_active=0
+fi
 
 if [[ ${picom_active} == 0 ]]
 then
