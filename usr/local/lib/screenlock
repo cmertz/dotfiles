@@ -5,26 +5,26 @@ set -e
 
 if systemctl --user --quiet is-active picom
 then
-  picom_active=0
+  picom_active="true"
 fi
 
-if [[ ${picom_active} == 0 ]]
+if [[ ${picom_active} == "true" ]]
 then
   systemctl --user stop picom
 fi
 
 /usr/bin/pactl set-sink-mute @DEFAULT_SINK@ 1
 
-env -i DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} slock &
-slock_pid=$!
+env -i DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} i3lock -i /home/chris/20160612131606-0b8ae7a1.png --nofork &
+lock_pid=$!
 
 if [[ -e /dev/fd/${XSS_SLEEP_LOCK_FD:--1} ]]; then
   exec {XSS_SLEEP_LOCK_FD}<&-
 fi
 
-wait ${slock_pid}
+wait ${lock_pid}
 
-if [[ ${picom_active} == 0 ]]
+if [[ ${picom_active} == "true" ]]
 then
   systemctl --user start picom
 fi
