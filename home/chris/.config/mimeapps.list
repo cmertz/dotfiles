@@ -1,7 +1,5 @@
 [Default Applications]
+application/pdf=org.pwmt.zathura-pdf-poppler.desktop
 application/x-bittorrent=magnet.desktop
 x-scheme-handler/magnet=magnet.desktop
-
-[Added Associations]
-application/pdf=chromium.desktop;
 text/plain=nvim.desktop;
