@@ -30,6 +30,53 @@ scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 tray-position = right
 
+
+[bar/dreckskiste-main]
+width = 100%
+height = 25
+background = ${colors.background}
+foreground = ${colors.foreground}
+underline-size = 2
+underline-color = ${colors.foreground}
+spacing = 1
+padding-left = 0
+padding-right = 5
+module-margin-left = 0
+module-margin-right = 0
+font-0 = Hack Nerd Font:style=Sans:size=10
+font-1 = FontAwesome:size=10;-2
+font-2 = siji:pixelsize=10;0
+modules-left = i3
+modules-center = date
+modules-right = volume
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+tray-position = right
+
+
+[bar/dreckskiste-beamer]
+width = 100%
+height = 25
+background = ${colors.background}
+foreground = ${colors.foreground}
+underline-size = 2
+underline-color = ${colors.foreground}
+spacing = 1
+padding-left = 0
+padding-right = 5
+module-margin-left = 0
+module-margin-right = 0
+font-0 = Hack Nerd Font:style=Sans:size=10
+font-1 = FontAwesome:size=10;-2
+font-2 = siji:pixelsize=10;0
+modules-left = i3
+modules-center =
+modules-right =
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+tray-position = r
+
+
 [module/wlan]
 type = internal/network
 interface = wlan
