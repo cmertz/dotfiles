@@ -27,7 +27,7 @@ bindsym $mod+Shift+n scratchpad show; floating disable
 
 bindsym $mod+Return exec alacritty
 
-bindsym $mod+r exec --no-startup-id rofi -show drun
+bindsym $mod+r exec --no-startup-id TERMINAL=/usr/bin/alacritty rofi -show combi -combi-modi "window#drun#Switch to:/home/chris/.config/rofi/workspace#Use:/home/chris/.config/rofi/screenlayout"
 
 bindsym $mod+Shift+q kill
 

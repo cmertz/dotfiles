@@ -2,13 +2,13 @@ configuration {
   display-drun:    "Activate";
   display-run:     "Execute";
   display-window:  "Window";
+  display-combi:  "";
   show-icons:      true;
-  sidebar-mode:    true;
-  matching: "fuzzy";
-  modi: "drun,window";
-  sort: true;
+  sort:            true;
   sorting-method: "fzf";
-  tokenize: true;
+  fullscreen:      true;
+  matching:        "fuzzy";
+  modi:            "combi";
 }
 
 * {
