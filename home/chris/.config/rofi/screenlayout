@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+if ARGV.empty?
+  puts Dir.glob(File.join(File.expand_path("~/.config/screenlayout"), "*")).map{|e| "screenlayout #{File.basename(e)}"}
+else
+  screenlayout = ARGV.first
+  fail unless screenlayout.start_with?("screenlayout ")
+  screenlayout = screenlayout.gsub("screenlayout ", '')
+
+  `~/.config/screenlayout/#{screenlayout}`
+end
