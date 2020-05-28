@@ -64,5 +64,7 @@ setopt nocorrect
 # auto sourcing of files
 source ${HOME}/.config/zsh/auto.zsh
 
+alias open=xdg-open
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
