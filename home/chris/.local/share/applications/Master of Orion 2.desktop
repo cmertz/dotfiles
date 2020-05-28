@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Master of Orion 2
-Exec=env WINEPREFIX="/home/chris/.wine" wine ORION95.exe
+Exec=env WINEPREFIX="/home/chris/.wine" WINEDLLOVERRIDES="mscoree,mshtml=" wine ORION95.exe
 Type=Application
 StartupNotify=true
 Path=/home/chris/games/mo2
