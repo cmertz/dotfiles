@@ -10,6 +10,12 @@ let g:go_test_timeout = '10s'
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 
+" https://github.com/Shougo/deoplete.nvim/issues/965#issuecomment-482925193
+set completeopt+=noselect
+call deoplete#custom#option('omni_patterns', {
+\ 'go': '[^. *\t]\.\w*',
+\})
+
 " highlight pretty much everything
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
