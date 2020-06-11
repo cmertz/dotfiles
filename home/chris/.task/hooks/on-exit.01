@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [[ "$3" != "command:add" && "$3" != "command:delete" && "$3" != "command:modify" && "$3" != "command:done" ]]
+then
+  exit 0
+fi
+
+task sync > /dev/null 2>&1
