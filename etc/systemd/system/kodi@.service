@@ -1,0 +1,13 @@
+[Unit]
+Description=Launch Kodi on main display
+Conflicts=kodi.socket
+
+[Service]
+Type=simple
+Environment=DISPLAY=:0.0
+Nice=-1
+ExecStart=/usr/bin/su %i /usr/bin/kodi
+ExecStopPost=/usr/bin/systemctl --no-block start kodi@%i.socket
+
+[Install]
+WantedBy=multi-user.target
