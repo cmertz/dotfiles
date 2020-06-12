@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=Heroes of Might and Magic 3 Complete
-Exec=env WINEPREFIX="/home/chris/.wine" wine Heroes3.exe
+Exec=env wine Heroes3.exe
 Type=Application
 StartupNotify=true
-Path=/home/chris/games/homm3
+Path=$HOME/games/homm3
 Icon=303B_goggame-1207658787.0
 StartupWMClass=heroes3.exe

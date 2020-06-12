@@ -4,8 +4,8 @@ set -e
 
 case $1 in
 "light")
-  sed -i 's/colors: \*dark/colors: \*light/' /home/chris/.config/alacritty/alacritty.yml
+  sed -i 's/colors: \*dark/colors: \*light/' $HOME/.config/alacritty/alacritty.yml
   ;;
 "dark")
-  sed -i 's/colors: \*light/colors: \*dark/' /home/chris/.config/alacritty/alacritty.yml
+  sed -i 's/colors: \*light/colors: \*dark/' $HOME/.config/alacritty/alacritty.yml
 esac
