@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=winebrowser
-MimeType=application/x-wine-extension-pdf;
-Exec=env WINEPREFIX="/home/chris/.wine" wine start /ProgIDOpen pdffile %f
-NoDisplay=true
-StartupNotify=true
-Icon=7765_winebrowser.0

@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=winebrowser
-MimeType=text/xml;
-Exec=env WINEPREFIX="/home/chris/.wine" wine start /ProgIDOpen xmlfile %f
-NoDisplay=true
-StartupNotify=true
-Icon=7765_winebrowser.0

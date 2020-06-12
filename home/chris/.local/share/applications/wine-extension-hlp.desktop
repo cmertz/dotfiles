@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=winhlp32
-MimeType=application/x-wine-extension-hlp;
-Exec=env WINEPREFIX="/home/chris/.wine" wine start /ProgIDOpen hlpfile %f
-NoDisplay=true
-StartupNotify=true
-Icon=4137_winhlp32.0
