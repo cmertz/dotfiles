@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Baldur's Gate II - Enhanced Edition
+Exec=sh -c 'cd $HOME/games/bg2 && env WINEDLLOVERRIDES="mscoree,mshtml=" wine Baldur.exe'
+Type=Application
+StartupNotify=true
+Icon=55C5_goggame-1207666373.0
+StartupWMClass=baldur.exe
