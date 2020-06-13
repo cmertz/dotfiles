@@ -239,7 +239,7 @@ solarized_dark: &dark
     white:   '0xeee8d5' # base2
 
   bright:
-    black:   '0x002b36' # base03
+    black:   '#444444'
     red:     '0xcb4b16' # orange
     green:   '0x586e75' # base01
     yellow:  '0x657b83' # base00
@@ -248,4 +248,4 @@ solarized_dark: &dark
     cyan:    '0x93a1a1' # base1
     white:   '0xfdf6e3' # base3
 
-colors: *light
+colors: *dark
