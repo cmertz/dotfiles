@@ -75,3 +75,8 @@ alias open=xdg-open
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# remove underlines from path elements
+(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[path]=none
+ZSH_HIGHLIGHT_STYLES[path_prefix]=none
