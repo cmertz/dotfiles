@@ -1,5 +1,5 @@
 [Default Applications]
-application/pdf=org.pwmt.zathura-pdf-poppler.desktop
+application/pdf=foxitreader.desktop;
 application/x-bittorrent=magnet.desktop
 x-scheme-handler/magnet=magnet.desktop
 text/plain=nvim.desktop;
