@@ -15,7 +15,7 @@ fi
 
 /usr/bin/pactl set-sink-mute @DEFAULT_SINK@ 1
 
-env -i DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} i3lock --image=$HOME/.sync/wallpapers/$(hostname)-lockscreen.png --nofork &
+env -i DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} i3lock --image=/data/sync/wallpapers/$(hostname)-lockscreen.png --nofork &
 lock_pid=$!
 
 if [[ -e /dev/fd/${XSS_SLEEP_LOCK_FD:--1} ]]; then
