@@ -34,9 +34,6 @@ Plug 'tpope/vim-git'
 " go development stuff
 Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries', 'for': 'go'}
 
-" go code completion
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make', 'for': 'go'}
-
 " terraform stuff
 Plug 'hashivim/vim-terraform', {'for': 'tf'}
 Plug 'vim-syntastic/syntastic', {'for': 'tf'}
