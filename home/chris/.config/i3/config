@@ -13,15 +13,15 @@ exec_always --no-startup-id systemctl --user start redshift-gtk
 
 bindsym $mod+t exec --no-startup-id /usr/local/lib/toggle-transparency
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@   +10%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@   -10%
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@   toggle
+bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 bindsym XF86MonBrightnessUp   exec --no-startup-id sudo /usr/local/bin/backlight +10
 bindsym XF86MonBrightnessDown exec --no-startup-id sudo /usr/local/bin/backlight -10
 
-bindsym --release $mod+l exec  --no-startup-id /usr/local/lib/screenlock
+bindsym --release $mod+l exec --no-startup-id /usr/local/lib/screenlock
 
 bindsym $mod+n move  scratchpad
 bindsym $mod+Shift+n scratchpad show; floating disable
@@ -51,15 +51,15 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
+set $ws1  "1"
+set $ws2  "2"
+set $ws3  "3"
+set $ws4  "4"
+set $ws5  "5"
+set $ws6  "6"
+set $ws7  "7"
+set $ws8  "8"
+set $ws9  "9"
 set $ws10 "10"
 
 # switch to workspace
