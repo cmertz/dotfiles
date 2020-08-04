@@ -8,6 +8,7 @@ window:
   dynamic_padding: false
   decorations: none
   startup_mode: Windowed
+  dynamic_title: true # Allow terminal applications to change Alacritty's window title.
 
 scrolling:
   history: 10000
@@ -28,8 +29,7 @@ font:
 
 draw_bold_text_with_bright_colors: true
 
-# not
-visual_bell:
+bell:
   animation: EaseOut
   duration: 50
   color: '0xffffff'
@@ -58,8 +58,6 @@ selection:
   # copy x selection to clipboard
   save_to_clipboard: true
 
-# Allow terminal applications to change Alacritty's window title.
-dynamic_title: true
 
 cursor:
   style: Block
