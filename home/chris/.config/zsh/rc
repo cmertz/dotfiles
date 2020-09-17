@@ -72,6 +72,7 @@ setopt nocorrect
 source ${HOME}/.config/zsh/auto.zsh
 
 alias open=xdg-open
+alias clip='xclip -selection clipboard'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
