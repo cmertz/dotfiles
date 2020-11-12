@@ -13,6 +13,8 @@ call plug#begin('~/.config/nvim/plugged')
 " color scheme
 Plug 'altercation/vim-colors-solarized'
 
+Plug 'ap/vim-buftabline'
+
 " mark changed lines on the side
 Plug 'airblade/vim-gitgutter'
 
