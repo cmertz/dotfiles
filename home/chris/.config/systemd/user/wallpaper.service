@@ -1,7 +1,0 @@
-[Unit]
-Description=Wallpaper
-Documentation=man:feh(1)
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/feh --randomize --bg-fill /data/sync/wallpapers
