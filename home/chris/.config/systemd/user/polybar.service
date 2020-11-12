@@ -1,6 +1,0 @@
-[Unit]
-Description=An information bar
-OnFailure=notify@%n
-
-[Service]
-ExecStart=/usr/bin/polybar top
