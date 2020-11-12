@@ -4,3 +4,6 @@ application/x-bittorrent=magnet.desktop
 x-scheme-handler/magnet=magnet.desktop
 text/plain=nvim.desktop;
 image/jpeg=feh.desktop;
+
+[Added Associations]
+application/ics=thunderbird.desktop;
