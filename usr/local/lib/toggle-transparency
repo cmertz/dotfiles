@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-if systemctl --user is-active picom
-then
-  systemctl --user stop picom
-else
-  systemctl --user start picom
-fi

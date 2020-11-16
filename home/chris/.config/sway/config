@@ -7,14 +7,6 @@ font pango:monospace 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-exec_always --no-startup-id systemctl --user restart mpv@-home-chris-share-playlists-work
-
-# TODO
-exec "systemctl --user import-environment; systemctl --user start sway-session.target"
-
-# TODO
-# exec_always --no-startup-id systemctl --user restart redshift-gtk
-
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@   +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@   -5%
 bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@   toggle
@@ -26,18 +18,16 @@ bindsym XF86AudioStop  exec playerctl stop
 bindsym XF86AudioNext  exec playerctl next
 bindsym XF86AudioPrev  exec playerctl previous
 
-bindsym XF86MonBrightnessUp   exec --no-startup-id sudo /usr/local/bin/backlight +10
-bindsym XF86MonBrightnessDown exec --no-startup-id sudo /usr/local/bin/backlight -10
-
 # TODO
-bindsym --release $mod+l exec --no-startup-id /usr/local/lib/screenlock
+# bindsym XF86MonBrightnessUp   exec --no-startup-id sudo /usr/local/bin/backlight +10
+# bindsym XF86MonBrightnessDown exec --no-startup-id sudo /usr/local/bin/backlight -10
 
 bindsym $mod+n move  scratchpad
 bindsym $mod+Shift+n scratchpad show; floating disable
 
 bindsym $mod+Return exec alacritty
 
-bindsym $mod+r exec --no-startup-id TERMINAL=/usr/bin/alacritty rofi -show combi -combi-modi "window#drun#Switch to:$HOME/.config/rofi/workspace#Use:$HOME/.config/rofi/screenlayout"
+bindsym $mod+r exec --no-startup-id TERMINAL=/usr/bin/alacritty rofi -show combi -combi-modi "window#drun#Switch to:$HOME/.config/rofi/workspace"
 
 bindsym $mod+Shift+q kill
 
@@ -106,13 +96,20 @@ smart_gaps on
 smart_borders on
 default_border none
 
-# TODO
-output DVI-I-1 background /data/sync/wallpapers/cimg6799.jpg fill
+exec "hash dbus-update-activation-environment 2>/dev/null; \
+     dbus-update-activation-environment --all; \
+     dbus-update-activation-environment --systemd; \
+     systemctl --user import-environment USER XDG_RUNTIME_DIR DBUS_SESSION_BUS_ADDRESS I3SOCK SWAYSOCK WAYLAND_DISPLAY; \
+     systemctl --user start sway-session.target"
 
 # TODO
-exec /usr/share/sway/scripts/inactive-windows-transparency.py
+exec /usr/local/lib/sway/inactive-transparency
 
-bar {
-    position top
-    swaybar_command waybar
-}
+# TODO
+exec --no-startup-id systemctl --user restart mpv@-home-chris-share-playlists-work
+
+# TODO
+bindsym --release $mod+l exec --no-startup-id /usr/local/lib/screenlock
+
+# TODO
+# exec_always --no-startup-id systemctl --user restart redshift-gtk

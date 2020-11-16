@@ -1,5 +1,5 @@
 [Unit]
-OnFailure=notify@%n
+OnFailure=notify-failure@%n
 
 [Service]
 ExecStart=/usr/bin/find . -mtime +7 -exec /usr/bin/rm -rf {} \;

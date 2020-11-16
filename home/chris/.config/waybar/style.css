@@ -1,0 +1,115 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: Roboto;
+    font-size: 13px;
+    min-height: 0;
+    background-color: transparent;
+}
+
+window#waybar {
+    border-bottom: 3px solid transparent;
+    color: #ffffff;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    font-weight: bold;
+    color: #ffffff;
+    border-bottom: 3px solid transparent;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: inherit;
+    border-bottom: 3px solid #ffffff;
+}
+
+#workspaces button.focused {
+    border-bottom: 3px solid #ffffff;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#clock,
+#battery,
+#memory,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#tray,
+#idle_inhibitor {
+    padding: 0 10px;
+    margin: 0 4px;
+    color: #ffffff;
+}
+
+#clock {
+    font-weight: bold;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#pulseaudio.muted {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+#pulseaudio.0 {
+  opacity: 0;
+}
+
+#pulseaudio.5 {
+  opacity: 0.05;
+}
+
+#pulseaudio.10 {
+  opacity: 0.1;
+}
+
+#pulseaudio.20 {
+  opacity: 0.2;
+}
+
+#pulseaudio.30 {
+  opacity: 0.3;
+}
+
+#pulseaudio.40 {
+  opacity: 0.4;
+}
+
+#pulseaudio.50 {
+  opacity: 0.5;
+}
+
+#pulseaudio.60 {
+  opacity: 0.6;
+}
+
+#pulseaudio.70 {
+  opacity: 0.7;
+}
+
+#pulseaudio.80 {
+  opacity: 0.8;
+}
+
+#pulseaudio.90 {
+  opacity: 0.9;
+}
+
+#pulseaudio.100 {
+  opacity: 1;
+}
+
+#idle_inhibitor.activated {
+    background-color: #FFFFFF;
+    color: #000000;
+}

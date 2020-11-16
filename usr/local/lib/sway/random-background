@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+# randomly select background images from a
+# folder and use them as sway background
+
+require 'open3'
+require 'json'
+
+folder = ARGV.first
+
+if !folder || folder.empty?
+  raise 'please give a folder with images for the wallpapers as argument'
+end
+
+out, status = Open3.capture2e('swaymsg', '-r', '-t', 'get_outputs')
+raise out unless status.success?
+
+outputs = JSON.parse(out).map{|e| e['name']}
+wallpapers = Dir.glob(File.join(folder, '*')).to_a.shuffle.take(outputs.length)
+
+outputs.zip(wallpapers).each do |(output, wallpaper)|
+  out, status = Open3.capture2e('swaymsg', 'output', '"' + output + '"', 'background', wallpaper, 'fill')
+  raise out unless status.success?
+end

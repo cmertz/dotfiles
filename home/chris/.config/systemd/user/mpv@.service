@@ -1,0 +1,5 @@
+[Unit]
+OnFailure=notify@%n
+
+[Service]
+ExecStart=/usr/bin/mpv --playlist=%I --shuffle --loop-playlist --pause
