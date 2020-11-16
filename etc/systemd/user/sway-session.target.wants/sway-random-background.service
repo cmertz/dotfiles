@@ -1,0 +1,9 @@
+[Unit]
+Description=Sets random sway backgrounds
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/lib/sway/random-background /data/sync/wallpapers
+
+[Install]
+WantedBy=sway-session.target
