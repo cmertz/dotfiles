@@ -3,19 +3,18 @@
 set -o pipefail
 set -e
 
-if systemctl --user --quiet is-active picom
-then
-  picom_active="true"
-fi
+TRANSPARENCY_SERVICE=sway-inactive-transparency
 
-if [[ ${picom_active} == "true" ]]
+if systemctl --user --quiet is-active $TRANSPARENCY_SERVICE
 then
-  systemctl --user stop picom
+  transparency_active="true"
+  systemctl --user stop $TRANSPARENCY_SERVICE
 fi
 
 /usr/bin/pactl set-sink-mute @DEFAULT_SINK@ 1
+/usr/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle;
 
-env -i DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} i3lock --image=/data/sync/wallpapers/$(hostname)-lockscreen.png --nofork &
+swaylock --ignore-empty-password --show-failed-attempts --indicator-caps-lock --color='000000' &
 lock_pid=$!
 
 if [[ -e /dev/fd/${XSS_SLEEP_LOCK_FD:--1} ]]; then
@@ -24,7 +23,7 @@ fi
 
 wait ${lock_pid}
 
-if [[ ${picom_active} == "true" ]]
+if [[ $transparency_active == "true" ]]
 then
-  systemctl --user start picom
+  systemctl --user start $TRANSPARENCY_SERVICE
 fi

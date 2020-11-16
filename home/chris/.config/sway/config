@@ -103,12 +103,8 @@ exec "hash dbus-update-activation-environment 2>/dev/null; \
      systemctl --user start sway-session.target"
 
 # TODO
-exec /usr/local/lib/sway/inactive-transparency
-
-# TODO
 exec --no-startup-id systemctl --user restart mpv@-home-chris-share-playlists-work
 
-# TODO
 bindsym --release $mod+l exec --no-startup-id /usr/local/lib/screenlock
 
 # TODO
