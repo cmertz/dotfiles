@@ -8,6 +8,7 @@
   rebase = true
 [init]
   templatedir = ~/.config/git/templates
+  defaultBranch = main
 [commit]
   verbose = 1
   template = ~/.config/git/commit-message-template
@@ -16,3 +17,5 @@
   required = true
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
+[url "git@code.nimel.de:"]
+  insteadOf = https://code.nimel.de/
