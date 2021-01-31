@@ -1,0 +1,11 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Operation=Remove
+Type=Package
+Target=intel-ucode
+
+[Action]
+Depends=mkinitcpio
+When=PostTransaction
+Exec=grub-mkconfig -o /boot/grub/grub.cfg
