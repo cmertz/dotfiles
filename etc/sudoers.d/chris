@@ -5,3 +5,6 @@ chris ALL=(ALL)  ALL
 chris ALL=(root) NOPASSWD: POWER
 chris ALL=(root) NOPASSWD: UPDATE
 chris ALL=(root) NOPASSWD: /usr/bin/psd-overlay-helper
+
+chris ALL=(root) NOPASSWD: /usr/local/bin/backlight -10
+chris ALL=(root) NOPASSWD: /usr/local/bin/backlight +10
