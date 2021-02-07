@@ -1,5 +1,5 @@
 [Unit]
-OnFailure=notify@%n
+OnFailure=notify-failure@%n
 
 [Service]
 Type=oneshot
