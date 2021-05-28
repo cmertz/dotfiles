@@ -18,9 +18,8 @@ bindsym XF86AudioStop  exec playerctl stop
 bindsym XF86AudioNext  exec playerctl next
 bindsym XF86AudioPrev  exec playerctl previous
 
-# TODO
-# bindsym XF86MonBrightnessUp   exec --no-startup-id sudo /usr/local/bin/backlight +10
-# bindsym XF86MonBrightnessDown exec --no-startup-id sudo /usr/local/bin/backlight -10
+bindsym XF86MonBrightnessUp   exec --no-startup-id sudo /usr/bin/light -A 15
+bindsym XF86MonBrightnessDown exec --no-startup-id sudo /usr/bin/light -U 15
 
 bindsym $mod+n move  scratchpad
 bindsym $mod+Shift+n scratchpad show; floating disable
@@ -96,6 +95,7 @@ smart_gaps on
 smart_borders on
 default_border none
 
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec "hash dbus-update-activation-environment 2>/dev/null; \
      dbus-update-activation-environment --all; \
      dbus-update-activation-environment --systemd; \
