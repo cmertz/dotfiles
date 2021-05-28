@@ -1,11 +1,1 @@
-[Unit]
-Description=Bar for Sway
-Documentation=https://github.com/Alexays/Waybar/wiki/
-PartOf=graphical-session.target
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/waybar
-
-[Install]
-WantedBy=sway-session.target
+../waybar.service

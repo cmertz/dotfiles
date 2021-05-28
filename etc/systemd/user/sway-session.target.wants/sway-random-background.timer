@@ -1,9 +1,1 @@
-[Unit]
-Description=Sets random sway backgrounds
-
-[Timer]
-OnCalendar=hourly
-Persistent=false
-
-[Install]
-WantedBy=sway-session.target
+../sway-random-background.timer
