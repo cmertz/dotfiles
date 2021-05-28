@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# manage locking of screen, in particular make
+# sure transparency does not defeat the locking
+
 set -o pipefail
 set -e
 
@@ -10,9 +13,6 @@ then
   transparency_active="true"
   systemctl --user stop $TRANSPARENCY_SERVICE
 fi
-
-/usr/bin/pactl set-sink-mute @DEFAULT_SINK@ 1
-/usr/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle;
 
 swaylock --ignore-empty-password --show-failed-attempts --indicator-caps-lock --color='000000' &
 lock_pid=$!
