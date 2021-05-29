@@ -41,4 +41,7 @@ Plug 'hashivim/vim-terraform', {'for': 'tf'}
 Plug 'vim-syntastic/syntastic', {'for': 'tf'}
 Plug 'juliosueiras/vim-terraform-completion', {'for': 'tf'}
 
+" opa / rego
+Plug 'tsandall/vim-rego', {'for': 'rego'}
+
 call plug#end()
