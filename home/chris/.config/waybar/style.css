@@ -2,114 +2,68 @@
     border: none;
     border-radius: 0;
     font-family: Roboto;
-    font-size: 13px;
-    min-height: 0;
-    background-color: transparent;
+    font-size: 16px;
 }
 
 window#waybar {
-    border-bottom: 3px solid transparent;
-    color: #ffffff;
+  background: rgba(0, 0, 0, 0);
+}
+
+.modules-right {
+  margin: 1px;
+	background-color: rgba(90, 90, 90, 0.85);
+  color: white;
+}
+.modules-center {
+  margin: 1px;
+	background-color: rgba(90, 90, 90, 0.85);
+  color: white;
+}
+.modules-left {
+  margin: 1px;
 }
 
 #workspaces button {
-    padding: 0 5px;
-    font-weight: bold;
-    color: #ffffff;
-    border-bottom: 3px solid transparent;
+  margin-left: 2px;
+  padding: 1px 5px;
+  background-color: transparent;
+  border: 1px solid rgba(90, 90, 90, 0.85);
+  color: rgba(0,43,51,0.85);
 }
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
-    box-shadow: inherit;
-    border-bottom: 3px solid #ffffff;
+  box-shadow: inherit;
 }
-
 #workspaces button.focused {
-    border-bottom: 3px solid #ffffff;
-}
-
-#workspaces button.urgent {
-    background-color: #eb4d4b;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+	background-color: rgba(90, 90, 90, 0.85);
+  color: white;
 }
 
 #clock,
 #battery,
+#cpu,
 #memory,
 #temperature,
-#backlight,
 #network,
 #pulseaudio,
-#tray,
-#idle_inhibitor {
-    padding: 0 10px;
-    margin: 0 4px;
-    color: #ffffff;
-}
-
-#clock {
-    font-weight: bold;
-}
-
-label:focus {
-    background-color: #000000;
+#tray {
+  padding: 0 10px;
 }
 
 #pulseaudio.muted {
-    background-color: #FFFFFF;
-    color: #000000;
+  color: #cc3436;
 }
 
-#pulseaudio.0 {
-  opacity: 0;
+#battery.charging {
+  color: #2dcc36;
+}
+#battery.warning:not(.charging) {
+	color: #e6e600;
+}
+#battery.critical:not(.charging) {
+  color: #cc3436;
 }
 
-#pulseaudio.5 {
-  opacity: 0.05;
-}
-
-#pulseaudio.10 {
-  opacity: 0.1;
-}
-
-#pulseaudio.20 {
-  opacity: 0.2;
-}
-
-#pulseaudio.30 {
-  opacity: 0.3;
-}
-
-#pulseaudio.40 {
-  opacity: 0.4;
-}
-
-#pulseaudio.50 {
-  opacity: 0.5;
-}
-
-#pulseaudio.60 {
-  opacity: 0.6;
-}
-
-#pulseaudio.70 {
-  opacity: 0.7;
-}
-
-#pulseaudio.80 {
-  opacity: 0.8;
-}
-
-#pulseaudio.90 {
-  opacity: 0.9;
-}
-
-#pulseaudio.100 {
-  opacity: 1;
-}
-
-#idle_inhibitor.activated {
-    background-color: #FFFFFF;
-    color: #000000;
+#temperature.critical {
+  color: #cc3436;
 }

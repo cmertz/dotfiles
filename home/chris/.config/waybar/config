@@ -1,33 +1,38 @@
 {
-    "height": 30,
-    "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
-    "modules-center": ["sway/window"],
-    "modules-right": ["idle_inhibitor", "pulseaudio", "network", "memory", "temperature", "backlight", "battery", "clock", "tray"],
+    "modules-left": ["sway/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["network", "pulseaudio", "backlight", "temperature", "battery", "tray"],
     "sway/mode": {
-        "format": "<span style=\"bold\">{}</span>"
+        "format": "<span style=\"italic\">{}</span>"
     },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ifname} ",
+        "format-disconnected": "",
+        "max-length": 50,
+        "on-click": "kitty -e 'nmtui'"
     },
     "tray": {
+        "icon-size": 15,
         "spacing": 10
     },
     "clock": {
-        "format": "{:%d.%m.%Y  %H:%M}",
-        "timezone": "Europe/Berlin",
-        "tooltip-format": ""
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
     },
     "memory": {
         "format": "{}% "
     },
     "temperature": {
-        "critical-threshold": 80,
+        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+        "critical-threshold": 82,
+        "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format-icons": [""]
     },
     "backlight": {
         "format": "{percent}% {icon}",
@@ -48,46 +53,22 @@
     "battery#bat2": {
         "bat": "BAT2"
     },
-    "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr}",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{icon} {format_source}",
-        // "format": "{volume}% {icon} {format_source}",
+        "format": "{volume}% {icon} ",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "",
+        "format-muted": "0% {icon} ",
+        "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
-            "hands-free": "",
-            "headset": "",
+            "hands-free": "",
+            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",
             "default": ["", "", ""]
         },
-        "states": {
-          "0": 0,
-          "5": 5,
-          "10": 10,
-          "20": 20,
-          "30": 30,
-          "40": 40,
-          "50": 50,
-          "60": 60,
-          "70": 70,
-          "80": 80,
-          "90": 90,
-          "100": 100,
-        },
-        "on-click": "/usr/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle; /usr/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle;",
-        "on-click-right": "pavucontrol"
+        "on-click": "pavucontrol"
     }
 }
