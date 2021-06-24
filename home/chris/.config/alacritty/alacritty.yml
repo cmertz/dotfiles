@@ -1,10 +1,9 @@
 window:
-  dimensions:
-    columns: 0
-    lines: 0
+  columns: 0
+  lines: 0
   padding:
-    x: 0
-    y: 0
+    x: 2
+    y: 2
   dynamic_padding: false
   decorations: none
   startup_mode: Windowed
@@ -46,11 +45,12 @@ mouse:
   hide_when_typing: false
 
   # ctrl click opens url
-  url:
-    launcher:
-      program: xdg-open
-      args: []
-    modifiers: Control
+  # TODO fix
+  # url:
+  #   launcher:
+  #     program: xdg-open
+  #     args: []
+  #   modifiers: Control
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
@@ -246,4 +246,4 @@ solarized_dark: &dark
     cyan:    '0x93a1a1' # base1
     white:   '0xfdf6e3' # base3
 
-colors: *dark
+colors: *light
