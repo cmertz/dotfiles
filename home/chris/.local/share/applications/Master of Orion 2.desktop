@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Master of Orion 2
-Exec=sh -c 'cd $HOME/games/mo2 && env WINEDLLOVERRIDES="mscoree,mshtml=" wine ORION95.exe'
-Type=Application
-StartupNotify=true
-Icon=FEAA_goggame-1207661633.0
-StartupWMClass=dosbox.exe

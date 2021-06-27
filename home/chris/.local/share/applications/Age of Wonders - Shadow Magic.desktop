@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Age of Wonders - Shadow Magic
-Exec=env WINEPREFIX="/home/chris/.wine" wine C:\\\\windows\\\\command\\\\start.exe /Unix /home/chris/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\\ Menu/Programs/GOG.com/Age\\ of\\ Wonders\\ -\\ Shadow\\ Magic/Age\\ of\\ Wonders\\ -\\ Shadow\\ Magic.lnk
-Type=Application
-StartupNotify=true
-Icon=311A_goggame-1207658885.0
-StartupWMClass=aowsmcompat.exe
