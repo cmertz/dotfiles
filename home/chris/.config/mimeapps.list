@@ -1,9 +1,12 @@
-[Default Applications]
-application/pdf=foxitreader.desktop;
-application/x-bittorrent=magnet.desktop
-x-scheme-handler/magnet=magnet.desktop
-text/plain=nvim.desktop;
-image/jpeg=feh.desktop;
-
 [Added Associations]
+
+[Default Applications]
 application/ics=thunderbird.desktop;
+application/pdf=org.pwmt.zathura-pdf-poppler.desktop;
+application/x-bittorrent=magnet.desktop;
+image/jpeg=imv.desktop;
+image/png=imv.desktop;
+text/plain=nvim.desktop;
+x-scheme-handler/magnet=magnet.desktop;
+x-scheme-handler/webcal=thunderbird.desktop;
+x-scheme-handler/msteams=teams.desktop
