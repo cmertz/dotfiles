@@ -8,22 +8,6 @@ set -e
 
 TRANSPARENCY_SERVICE=sway-inactive-transparency
 
-if systemctl --user --quiet is-active $TRANSPARENCY_SERVICE
-then
-  transparency_active="true"
-  systemctl --user stop $TRANSPARENCY_SERVICE
-fi
-
-swaylock --ignore-empty-password --show-failed-attempts --indicator-caps-lock --color='000000' &
-lock_pid=$!
-
-if [[ -e /dev/fd/${XSS_SLEEP_LOCK_FD:--1} ]]; then
-  exec {XSS_SLEEP_LOCK_FD}<&-
-fi
-
-wait ${lock_pid}
-
-if [[ $transparency_active == "true" ]]
-then
-  systemctl --user start $TRANSPARENCY_SERVICE
-fi
+systemctl --user stop $TRANSPARENCY_SERVICE
+swaylock --ignore-empty-password --show-failed-attempts --indicator-caps-lock --color='000000'
+systemctl --user start $TRANSPARENCY_SERVICE

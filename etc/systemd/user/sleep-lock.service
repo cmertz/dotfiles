@@ -3,10 +3,12 @@ Description=Lock screen before sleep
 OnFailure=notify-failure@%n
 
 [Service]
-Environment=DISPLAY=:0
-ExecStart=/usr/bin/xss-lock -l /usr/local/lib/screenlock
+ExecStart=/usr/bin/swayidle -w \
+                            before-sleep '/usr/bin/systemctl --user stop sway-inactive-transparency' \
+                            before-sleep '/usr/bin/swaylock --ignore-empty-password --show-failed-attempts --indicator-caps-lock --color="000000" --daemonize' \
+                            after-resume '/usr/bin/systemctl --user start sway-inactive-transparency'
 Restart=always
 RestartSec=2
 
 [Install]
-WantedBy=default.target
+WantedBy=sway-session.target
