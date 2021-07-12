@@ -1,39 +1,32 @@
 window {
-margin: 0px;
-border: 1px solid #bd93f9;
-background-color: #282a36;
+  margin: 0px;
+  background-color: rgba(90, 90, 90, 0.85);
 }
 
 #input {
-margin: 5px;
-border: none;
-color: #f8f8f2;
-background-color: #44475a;
+  margin: 5px;
+  border: none;
+  color: rgba(90, 90, 90, 0.85);
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
 #inner-box {
-margin: 5px;
-border: none;
-background-color: #282a36;
-}
-
-#outer-box {
-margin: 5px;
-border: none;
-background-color: #282a36;
+  background-color: transparent;
 }
 
 #scroll {
-margin: 0px;
-border: none;
+  margin: 5px;
 }
 
 #text {
-margin: 5px;
-border: none;
-color: #f8f8f2;
+  margin: 5px;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 #entry:selected {
-background-color: #44475a;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+#entry:selected #text {
+  color: rgba(90, 90, 90, 0.85);
 }
