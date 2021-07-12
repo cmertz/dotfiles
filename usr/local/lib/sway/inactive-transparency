@@ -1,17 +1,15 @@
 #!/usr/bin/python
 
-# This script requires i3ipc-python package (install it from a system package manager
-# or pip).
-# It makes inactive windows transparent. Use `transparency_val` variable to control
-# transparency strength in range of 0…1 or use the command line argument -o.
+# requires `i3ipc-python` package (from system package manager or pip)
 
-import argparse
 import i3ipc
 import signal
 import sys
-from functools import partial
 
-def on_window_focus(inactive_opacity, ipc, event):
+INACTIVE_OPACITY = "0.80"
+ACTIVE_OPACITY   = "1"
+
+def on_window_focus(ipc, event):
     global prev_focused
 
     focused = event.container
@@ -19,8 +17,8 @@ def on_window_focus(inactive_opacity, ipc, event):
     if focused.id == prev_focused.id:  # https://github.com/swaywm/sway/issues/2859
         return
 
-    focused.command("opacity 1")
-    prev_focused.command("opacity " + inactive_opacity)
+    focused.command(f'opacity {ACTIVE_OPACITY}')
+    prev_focused.command(f'opacity {INACTIVE_OPACITY}')
 
     prev_focused = focused
 
@@ -28,26 +26,12 @@ def on_window_focus(inactive_opacity, ipc, event):
 def remove_opacity(ipc):
     for workspace in ipc.get_tree().workspaces():
         for w in workspace:
-            w.command("opacity 1")
+            w.command(f'opacity {ACTIVE_OPACITY}')
     ipc.main_quit()
     sys.exit(0)
 
 
 if __name__ == "__main__":
-    transparency_val = "0.80"
-
-    parser = argparse.ArgumentParser(
-        description="This script allows you to set the transparency of unfocused windows in sway."
-    )
-    parser.add_argument(
-        "--opacity",
-        "-o",
-        type=str,
-        default=transparency_val,
-        help="set opacity value in range 0...1",
-    )
-    args = parser.parse_args()
-
     ipc = i3ipc.Connection()
 
     prev_focused = None
@@ -56,10 +40,10 @@ if __name__ == "__main__":
         if window.focused:
             prev_focused = window
         else:
-            window.command("opacity " + args.opacity)
+            window.command(f'opacity {INACTIVE_OPACITY}')
 
     for sig in [signal.SIGINT, signal.SIGTERM]:
         signal.signal(sig, lambda signal, frame: remove_opacity(ipc))
 
-    ipc.on("window::focus", partial(on_window_focus, args.opacity))
+    ipc.on("window::focus", on_window_focus)
     ipc.main()
