@@ -82,3 +82,5 @@ alias clip='xclip -selection clipboard'
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
+export NPM_PACKAGES="${HOME}/.npm-global"
+export PATH=$PATH:/home/chris/.npm-global/bin
