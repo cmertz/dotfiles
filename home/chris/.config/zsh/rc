@@ -82,5 +82,3 @@ alias clip='xclip -selection clipboard'
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
-export PULUMI_CONFIG_PASSPHRASE=''
-export PATH=/home/chris/.pulumi/bin:$PATH
