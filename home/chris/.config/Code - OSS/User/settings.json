@@ -1,5 +1,4 @@
 {
-    "window.zoomLevel": 0,
     "go.formatTool": "goimports",
     "go.useLanguageServer": true,
     "git.confirmSync": false,
@@ -19,5 +18,15 @@
         "args": []
     },
     "explorer.confirmDragAndDrop": false,
-    "files.trimTrailingWhitespace": true
+    "files.trimTrailingWhitespace": true,
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "go.toolsManagement.autoUpdate": true,
+    "workbench.colorTheme": "Solarized Light",
+    "window.zoomLevel": 1,
+    "workbench.startupEditor": "none"
 }
