@@ -102,9 +102,6 @@ exec "hash dbus-update-activation-environment 2>/dev/null; \
      systemctl --user import-environment USER XDG_RUNTIME_DIR DBUS_SESSION_BUS_ADDRESS I3SOCK SWAYSOCK WAYLAND_DISPLAY; \
      systemctl --user start sway-session.target"
 
-# TODO
-exec --no-startup-id systemctl --user restart mpv@-home-chris-share-playlists-work
-
 bindsym --release $mod+l exec --no-startup-id /usr/local/lib/screenlock
 
 # TODO
