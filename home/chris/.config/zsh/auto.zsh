@@ -32,12 +32,15 @@
 #    and merges them. The same keys in later files override earlier ones.
 #
 
-_auto_dir=${_auto_dir:-${HOME}/.config/zsh/auto}
+local _auto_dir=$HOME/.config/zsh/auto
+local _auto_presets=$(find $HOME/.config/zsh -name "auto_*.zsh")
 
 # proxy functions
-for auto in $(ls $_auto_dir -1 | sed "s#$_auto_dir/##g")
+for p in $_auto_dir/*
 do
-  if [[ $command[$auto] == "" ]]
+  auto=$(basename $p)
+
+  if [[ $+commands[$auto] != "1" ]]
   then
     continue
   fi
@@ -50,48 +53,49 @@ do
   }
 done
 
-# auto sourcing on cd
-typeset -gA _auto_lookup
-export _auto_lookup
+if [[ $_auto_presets -gt 0 ]]
+then
+  typeset -gA _auto_lookup
+  export _auto_lookup
 
-for preset in $(ls ${HOME}/.config/zsh/auto_*.zsh -1 | sort | xargs)
-do
-  typeset -A _auto
-  export _auto
-
-  source $preset
-
-  for dir in $(print -l -- ${(k)_auto})
+  for preset in $_auto_presets
   do
-    _auto_lookup[$dir]=$_auto[$dir]
+    typeset -A _auto
+    export _auto
+
+    source $preset
+
+    for dir in $(print -l -- ${(k)_auto})
+    do
+      _auto_lookup[$dir]=$_auto[$dir]
+    done
+
+    unset _auto
   done
 
-  unset _auto
-done
+  function chpwd() {
+    emulate -L zsh
 
-function chpwd() {
-  emulate -L zsh
+    local keep=()
 
-  local keep=()
+    for auto in $(echo $_auto_lookup[$PWD] | sed "s/ /\n/g" | sort)
+    do
+      if [[ ! -f "$_auto_dir/$auto" ]]
+      then
+        echo "zsh: file not found ($_auto_dir/$auto)"
+        keep=($keep $auto)
+        continue
+      fi
 
-  for auto in $(echo $_auto_lookup[$PWD] | sed "s/ /\n/g" | sort)
-  do
-    if [[ ! -f "$_auto_dir/$auto" ]]
-    then
-      echo "zsh: file not found ($_auto_dir/$auto)"
-      keep=($keep $auto)
-      continue
-    fi
+      if typeset -f $auto > /dev/null
+      then
+        unfunction $auto
+      fi
 
-    if typeset -f $auto > /dev/null
-    then
-      unfunction $auto
-    fi
+      echo "zsh: source ${auto}"
+      source "$_auto_dir/$auto"
+    done
 
-    echo "zsh: source ${auto}"
-    source "$_auto_dir/$auto"
-  done
-
-  _auto_lookup[$PWD]=$keep
-}
-
+    _auto_lookup[$PWD]=$keep
+  }
+fi

@@ -13,6 +13,7 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ${HOME}/.config/zsh/completion.zsh
 source ${HOME}/.config/zsh/history.zsh
 source ${HOME}/.config/zsh/edit-command-line.zsh
+source ${HOME}/.config/zsh/auto.zsh
 source /usr/share/doc/pkgfile/command-not-found.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/zsh-theme-powerlevel10k/config/p10k-lean.zsh
