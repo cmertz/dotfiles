@@ -8,21 +8,9 @@ bindkey -e
 # `delete` key
 bindkey '^[[3~' delete-char
 
-autoload -Uz compinit
-compinit
-
-# from https://thevaluable.dev/zsh-completion-guide-examples/
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ${HOME}/.cache/zsh/.zcompcache
-zstyle ':completion:*' completer _extensions _expand_alias _complete
-zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' file-list all
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' squeeze-slashes true
-
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ${HOME}/.config/zsh/completion.zsh
 source ${HOME}/.config/zsh/history.zsh
 source ${HOME}/.config/zsh/edit-command-line.zsh
 source /usr/share/doc/pkgfile/command-not-found.zsh
