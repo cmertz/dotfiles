@@ -61,9 +61,21 @@ source ${HOME}/.config/zsh/auto.zsh
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
+# make `ctrl-d` work when partial command is typed already
 exit_zsh() { exit }
 zle -N exit_zsh
 bindkey '^D' exit_zsh
+
+# set terminal emulator window title
+function term_title_precmd () {
+	print -Pn -- '\e]2;%n@%m %~\a'
+}
+function term_title_preexec () {
+	print -Pn -- '\e]2;%n@%m %~ %# ' && print -n -- "${(q)1}\a"
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook -Uz precmd  term_title_precmd
+add-zsh-hook -Uz preexec term_title_preexec
 
 # npm
 export NPM_PACKAGES="${HOME}/.npm-global"
