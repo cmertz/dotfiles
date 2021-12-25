@@ -1,0 +1,21 @@
+# xdg dirs
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_CACHE_HOME=$HOME/.cache
+
+# gpg/ssh auth socket
+export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh
+
+# history
+export HISTFILE=${XDG_CONFIG_HOME}/zsh/history
+export HISTSIZE=10000
+export SAVEHIST=10000
+
+# default editor
+export EDITOR=nvim
+export VISUAL=nvim
+
+# circumvent xdg-open errors when trying to lookup x-www-browser
+export BROWSER="firefox:chromium"
+
+# vi: ft=zsh

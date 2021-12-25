@@ -1,95 +1,33 @@
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+if [[ -r "${HOME}/.cache/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${HOME}/.cache/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# command not found hook
-source /usr/share/doc/pkgfile/command-not-found.zsh
-
-# history
-setopt hist_ignore_all_dups
-setopt share_history
-setopt inc_append_history
-setopt hist_verify
-setopt hist_ignore_space
-if [ -z "$HISTFILE" ]; then
-  HISTFILE=$HOME/.zsh_history
-fi
-HISTSIZE=10000
-SAVEHIST=10000
-alias h='history 1'
-
-# emacs key bindings
+# emacs mode
 bindkey -e
 
-# default editor
-export EDITOR=nvim
-export VISUAL=nvim
+# `delete` key
+bindkey '^[[3~' delete-char
 
-# circumvent xdg-open errors when trying to lookup x-www-browser
-export BROWSER="firefox:chromium"
+autoload -Uz compinit
+compinit
 
-# set ssh agent socket if it is not already set
-if [[ ! -v SSH_AUTH_SOCK ]]
-then
-  export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
-fi
-alias ssh='TERM=xterm-256color /usr/bin/ssh'
+# from https://thevaluable.dev/zsh-completion-guide-examples/
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ${HOME}/.cache/zsh/.zcompcache
+zstyle ':completion:*' completer _extensions _expand_alias _complete
+zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' file-list all
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' squeeze-slashes true
 
-# fish like history search
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-zmodload zsh/terminfo
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
-
-# fish like syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# fish like autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# remove annoying menu selection
-setopt noautomenu
-
-# remove annoying autocorrect
-setopt nocorrect
-
-# auto sourcing of files
-source ${HOME}/.config/zsh/auto.zsh
-
-# remove underlines from path elements
-(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
-ZSH_HIGHLIGHT_STYLES[path]=none
-ZSH_HIGHLIGHT_STYLES[path_prefix]=none
-
-# make `ctrl-d` work when partial command is typed already
-exit_zsh() { exit }
-zle -N exit_zsh
-bindkey '^D' exit_zsh
-
-# set terminal emulator window title
-function term_title_precmd () {
-	print -Pn -- '\e]2;%n@%m %~\a'
-}
-function term_title_preexec () {
-	print -Pn -- '\e]2;%n@%m %~ %# ' && print -n -- "${(q)1}\a"
-}
-autoload -Uz add-zsh-hook
-add-zsh-hook -Uz precmd  term_title_precmd
-add-zsh-hook -Uz preexec term_title_preexec
-
-# npm
-export NPM_PACKAGES="${HOME}/.npm-global"
-export PATH=${PATH}:${HOME}/.npm-global/bin
-
-# golang
-export GOPATH=$HOME
-export PATH=$PATH:$GOPATH/bin
-
-# ruby
-source /usr/share/chruby/chruby.sh
-
-# prompt with relevant indicators i.e.
-# vcs, kube context, aws, ...
+source ${HOME}/.config/zsh/history.zsh
+source ${HOME}/.config/zsh/edit-command-line.zsh
+source /usr/share/doc/pkgfile/command-not-found.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/zsh-theme-powerlevel10k/config/p10k-lean.zsh
 source ~/.p10k.zsh
+
+# vi: ft=zsh
