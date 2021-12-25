@@ -28,13 +28,6 @@ export VISUAL=nvim
 # circumvent xdg-open errors when trying to lookup x-www-browser
 export BROWSER="firefox:chromium"
 
-# golang
-export GOPATH=$HOME
-export PATH=$PATH:$GOPATH/bin
-
-# ruby
-source /usr/share/chruby/chruby.sh
-
 # set ssh agent socket if it is not already set
 if [[ ! -v SSH_AUTH_SOCK ]]
 then
@@ -54,12 +47,6 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # fish like autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# prompt with relevant indicators i.e.
-# vcs, kube context, aws, ...
-export POWERLEVEL9K_MODE='nerdfont-complete'
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-source /usr/share/zsh-theme-powerlevel10k/config/p10k-lean.zsh
-
 # remove annoying menu selection
 setopt noautomenu
 
@@ -68,9 +55,6 @@ setopt nocorrect
 
 # auto sourcing of files
 source ${HOME}/.config/zsh/auto.zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # remove underlines from path elements
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
@@ -81,5 +65,19 @@ exit_zsh() { exit }
 zle -N exit_zsh
 bindkey '^D' exit_zsh
 
+# npm
 export NPM_PACKAGES="${HOME}/.npm-global"
-export PATH=$PATH:/home/chris/.npm-global/bin
+export PATH=${PATH}:${HOME}/.npm-global/bin
+
+# golang
+export GOPATH=$HOME
+export PATH=$PATH:$GOPATH/bin
+
+# ruby
+source /usr/share/chruby/chruby.sh
+
+# prompt with relevant indicators i.e.
+# vcs, kube context, aws, ...
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+source /usr/share/zsh-theme-powerlevel10k/config/p10k-lean.zsh
+source ~/.p10k.zsh
