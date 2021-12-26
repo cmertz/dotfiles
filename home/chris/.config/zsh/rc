@@ -12,7 +12,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source $XDG_CONFIG_HOME/zsh/completion.zsh
 source $XDG_CONFIG_HOME/zsh/history.zsh
 source $XDG_CONFIG_HOME/zsh/edit-command-line.zsh
-source $XDG_CONFIG_HOME/zsh/auto.zsh
+source $XDG_CONFIG_HOME/zsh/lazy.zsh
 source /usr/share/doc/pkgfile/command-not-found.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/zsh-theme-powerlevel10k/config/p10k-lean.zsh
