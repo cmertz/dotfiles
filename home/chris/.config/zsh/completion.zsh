@@ -1,3 +1,6 @@
+# fish like autosuggestions from history
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 autoload -Uz compinit
 if [[ -n ${HOME}/.zcompdump(#qN.mh+24) ]]; then
   compinit

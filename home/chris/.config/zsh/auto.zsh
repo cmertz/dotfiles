@@ -1,5 +1,7 @@
 # delayed sourcing of files
 #
+# inspired by https://frederic-hemberger.de/notes/shell/speed-up-initial-zsh-startup-with-lazy-loading/
+#
 # This exists mainly because my autocomplete setups add up
 # in startup time and push the time to start `zsh` to
 # nearly 2 seconds.

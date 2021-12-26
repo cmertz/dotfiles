@@ -15,6 +15,17 @@ export SAVEHIST=10000
 export EDITOR=nvim
 export VISUAL=nvim
 
+# npm
+export NPM_PACKAGES="${HOME}/.npm-global"
+export PATH=${PATH}:${HOME}/.npm-global/bin
+
+# golang
+export GOPATH=$HOME
+export PATH=$PATH:$GOPATH/bin
+
+# ruby
+source /usr/share/chruby/chruby.sh
+
 # circumvent xdg-open errors when trying to lookup x-www-browser
 export BROWSER="firefox:chromium"
 

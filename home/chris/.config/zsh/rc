@@ -9,14 +9,19 @@ bindkey -e
 bindkey '^[[3~' delete-char
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ${HOME}/.config/zsh/completion.zsh
-source ${HOME}/.config/zsh/history.zsh
-source ${HOME}/.config/zsh/edit-command-line.zsh
-source ${HOME}/.config/zsh/auto.zsh
+source $XDG_CONFIG_HOME/zsh/completion.zsh
+source $XDG_CONFIG_HOME/zsh/history.zsh
+source $XDG_CONFIG_HOME/zsh/edit-command-line.zsh
+source $XDG_CONFIG_HOME/zsh/auto.zsh
 source /usr/share/doc/pkgfile/command-not-found.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/zsh-theme-powerlevel10k/config/p10k-lean.zsh
 source ~/.p10k.zsh
+
+if [[ `id -u` == 0 ]]
+then
+  export _ZO_DATA_DIR=/root/.local/share
+fi
+eval "$(zoxide init zsh)"
 
 # vi: ft=zsh
