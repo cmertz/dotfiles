@@ -28,5 +28,6 @@
     "go.toolsManagement.autoUpdate": true,
     "workbench.colorTheme": "Solarized Light",
     "window.zoomLevel": 1,
-    "workbench.startupEditor": "none"
+    "workbench.startupEditor": "none",
+    "json.schemas": []
 }
