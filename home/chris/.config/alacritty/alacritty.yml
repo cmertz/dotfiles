@@ -8,6 +8,7 @@ window:
   decorations: none
   startup_mode: Windowed
   dynamic_title: true # Allow terminal applications to change Alacritty's window title.
+  opacity: 1.0
 
 scrolling:
   history: 10000
@@ -33,7 +34,6 @@ bell:
   duration: 10
   color: '0xff0000'
 
-background_opacity: 1.0
 
 # use clipboard instead of x selection
 mouse_bindings:
