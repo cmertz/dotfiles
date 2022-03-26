@@ -16,7 +16,7 @@ source $XDG_CONFIG_HOME/zsh/lazy.zsh
 source /usr/share/doc/pkgfile/command-not-found.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/zsh-theme-powerlevel10k/config/p10k-lean.zsh
-source ~/.p10k.zsh
+source $HOME/.p10k.zsh
 
 if [[ `id -u` == 0 ]]
 then
