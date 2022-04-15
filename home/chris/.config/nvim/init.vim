@@ -60,14 +60,27 @@ au CursorHold * checktime
 " remove trailing whitespaces on write
 autocmd BufWritePre * :%s/\s\+$//e
 
-" Use deoplete
-let g:deoplete#enable_at_startup = 1
-
 " remove vertical separator bars
 set fillchars+=vert:\ "
 
 " ommit help message
 let g:tagbar_compact = 1
 
-" assume config under default for $XDG_CONFIG_HOME ... which we do not set
-source $HOME/.config/nvim/global-mappings.vim
+" navigate through tabs with
+nnoremap <silent><Tab>   :bn<CR>
+nnoremap <silent><S-Tab> :bp<CR>
+
+" comment plugin
+nnoremap <silent>// :TComment<CR>
+vnoremap <silent>// :TComment<CR>
+
+nnoremap <silent><C-t> :TagbarToggle<CR>
+nnoremap <silent>:bd :bp<cr>:bd #<cr>
+
+" make vim feel more editory
+nnoremap <silent><C-s> :w<CR>
+inoremap <silent><C-s> <ESC>:w<CR>i
+nnoremap <silent><C-f> /
+inoremap <silent><C-f> <ESC> /
+nnoremap <silent><C-q> :qall<CR>
+inoremap <silent><C-q> <ESC>:qall<CR>
