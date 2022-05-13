@@ -15,6 +15,9 @@ Plug 'altercation/vim-colors-solarized'
 
 Plug 'ap/vim-buftabline'
 
+" go development stuff
+Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries', 'for': 'go'}
+
 " mark changed lines on the side
 Plug 'airblade/vim-gitgutter'
 
