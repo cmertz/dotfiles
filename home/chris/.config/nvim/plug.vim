@@ -15,6 +15,10 @@ Plug 'altercation/vim-colors-solarized'
 
 Plug 'ap/vim-buftabline'
 
+" requires
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+
 " go development stuff
 Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries', 'for': 'go'}
 
@@ -37,5 +41,7 @@ Plug 'tpope/vim-git'
 Plug 'tsandall/vim-rego', {'for': 'rego'}
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'tpope/vim-cucumber'
 
 call plug#end()

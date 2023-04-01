@@ -12,6 +12,11 @@ set number
 " mouse support
 set mouse=a
 
+lua << EOF
+require'nvim-tree'.setup {
+}
+EOF
+
 " encoding and fileencoding
 set encoding=utf-8
 
