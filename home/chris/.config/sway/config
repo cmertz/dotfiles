@@ -103,6 +103,4 @@ exec "hash dbus-update-activation-environment 2>/dev/null; \
      systemctl --user start sway-session.target"
 
 bindsym --release $mod+l exec --no-startup-id /usr/local/lib/screenlock
-
-# TODO
-# exec_always --no-startup-id systemctl --user restart redshift-gtk
+bindsym $mod+Print exec --no-startup-id slurp | grim -g -
