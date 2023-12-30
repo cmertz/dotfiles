@@ -28,4 +28,6 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
     exec sway
 fi
 
+export LANG=en_US.UTF-8
+
 # vi: ft=zsh
