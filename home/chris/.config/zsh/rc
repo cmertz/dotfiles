@@ -24,10 +24,12 @@ then
 fi
 eval "$(zoxide init zsh)"
 
+# autostart sway on first tty
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
     exec sway
 fi
 
-export LANG=en_US.UTF-8
+# fix pinentry for gpg
+gpg-connect-agent updatestartuptty /bye > /dev/null
 
 # vi: ft=zsh
