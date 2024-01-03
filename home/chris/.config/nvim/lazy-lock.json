@@ -1,0 +1,7 @@
+{
+  "lazy.nvim": { "branch": "main", "commit": "0d61488b89a570415177f75a36ef93616aac6c77" },
+  "nvim-lint": { "branch": "master", "commit": "0b99416769e87231ce37aec64b4ed91feb43a98e" },
+  "nvim-lspconfig": { "branch": "master", "commit": "0011c435282f043a018e23393cae06ed926c3f4a" },
+  "nvim-tree.lua": { "branch": "master", "commit": "1fe32286db79719dd6e52236f82c5b52df3ccaa9" },
+  "nvim-web-devicons": { "branch": "master", "commit": "9ab9b0b894b2388a9dbcdee5f00ce72e25d85bf9" }
+}
