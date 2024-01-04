@@ -2,6 +2,7 @@ require("plugins")
 require("lsp")
 require("linter")
 require("formatter")
+require("completion")
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -49,8 +50,13 @@ opt.list = false
 opt.spelllang = "en_us"
 opt.spell = false
 
-local map = function(mode, lhs, rhs) 
-	vim.keymap.set(mode, lhs, rhs, { silent = true })
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*" },
+  command = [[%s/\s\+$//e]],
+})
+
+local map = function(mode, lhs, rhs)
+	vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true })
 end
 
 local api = require("nvim-tree.api")
