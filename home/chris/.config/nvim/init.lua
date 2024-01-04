@@ -6,17 +6,19 @@ require("formatter")
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+local opt = vim.opt
+
 -- disable backup files
-vim.opt.backup = false
-vim.opt.writebackup = false
+opt.backup = false
+opt.writebackup = false
 
 -- break on specific chars only
-vim.opt.linebreak = true
+opt.linebreak = true
 
 -- show line numbers
-vim.opt.number = true
+opt.number = true
 
-vim.opt.listchars = {
+opt.listchars = {
 	tab = "▸ ",
 	trail = "·",
 	extends = "…",
@@ -26,21 +28,24 @@ vim.opt.listchars = {
 }
 
 -- nolist
-vim.opt.list = false
+opt.list = false
 
 -- spell checking
-vim.opt.spelllang = "en_us"
-vim.opt.spell = true
+opt.spelllang = "en_us"
+opt.spell = true
 
-local map = vim.keymap.set
+local map = function(mode, lhs, rhs) 
+	vim.keymap.set(mode, lhs, rhs, { silent = true })
+end
+
 local api = require("nvim-tree.api")
 
-map("n", "<C-q>", "<ESC>:qall<cr>", { silent = true })
-map("n", "<C-s>", "<ESC>:w<cr>", { silent = true })
-map("n", '<C-t>', function() return api.tree.toggle({ focus = false }) end)
-map("n", '<S-Tab>', "<ESC>:bnext<cr>")
-map("n", '<C-S-Tab>', "<ESC>:bnext<cr>")
+map("n", "<C-q>", "<ESC>:qall<cr>")
+map("n", "<C-s>", "<ESC>:w<cr>")
+map("n", "<C-t>", function() return api.tree.toggle({ focus = false }) end)
+map("n", "<C-Tab>", "<ESC>:bn<cr>")
+map("n", "<C-S-Tab>", "<ESC>:bp<cr>")
 
-map("n", "<C-r>", vim.lsp.buf.rename,     { silent = true })
-map("n", "<C-d>", vim.lsp.buf.definition, { silent = true })
-map("n", "<C-e>", vim.lsp.buf.references, { silent = true })
+map("n", "<C-r>", vim.lsp.buf.rename)
+map("n", "<C-d>", vim.lsp.buf.definition)
+map("n", "<C-e>", vim.lsp.buf.references)
