@@ -6,7 +6,12 @@ require("formatter")
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- 24bit term colors
+vim.o.termguicolors = true
+
 local opt = vim.opt
+
+opt.ttyfast = true
 
 -- disable backup files
 opt.backup = false
@@ -18,6 +23,9 @@ opt.linebreak = true
 -- show line numbers
 opt.number = true
 
+-- no line wrapping
+opt.wrap = false
+
 opt.listchars = {
 	tab = "▸ ",
 	trail = "·",
@@ -27,12 +35,19 @@ opt.listchars = {
 	eol = "¬",
 }
 
+-- tabs
+opt.smarttab = true -- tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
+opt.tabstop = 4 -- the visible width of tabs
+opt.softtabstop = 4 -- edit as if the tabs are 4 characters wide
+opt.shiftwidth = 4 -- number of spaces to use for indent and unindent
+opt.shiftround = true -- round indent to a multiple of 'shiftwidth'
+
 -- nolist
 opt.list = false
 
 -- spell checking
 opt.spelllang = "en_us"
-opt.spell = true
+opt.spell = false
 
 local map = function(mode, lhs, rhs) 
 	vim.keymap.set(mode, lhs, rhs, { silent = true })
