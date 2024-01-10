@@ -19,6 +19,13 @@ require("lazy").setup({
 	{ "hrsh7th/nvim-cmp" },
 	{ "mfussenegger/nvim-lint" },
 	{
+		'akinsho/bufferline.nvim',
+		dependencies = 'nvim-tree/nvim-web-devicons',
+		config = function()
+			require("bufferline").setup {}
+		end,
+	},
+	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
