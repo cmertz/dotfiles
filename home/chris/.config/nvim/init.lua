@@ -12,11 +12,21 @@ vim.o.termguicolors = true
 
 local opt = vim.opt
 
+-- column for signs at the left
+opt.signcolumn = 'yes'
+vim.cmd[[highlight SignColumn guibg=NONE]]
+
+-- suppress text for errors / warnings
+vim.diagnostic.config({
+  virtual_text =  false,
+})
+
 opt.ttyfast = true
 
 -- disable backup files
 opt.backup = false
 opt.writebackup = false
+
 
 -- break on specific chars only
 opt.linebreak = true
