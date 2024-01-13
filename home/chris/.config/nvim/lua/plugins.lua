@@ -12,26 +12,60 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	{ "neovim/nvim-lspconfig" },
-	{ "hrsh7th/cmp-nvim-lsp" },
-	{ "hrsh7th/cmp-buffer" },
-	{ "hrsh7th/vim-vsnip" },
-	{ "hrsh7th/nvim-cmp" },
-	{ "mfussenegger/nvim-lint" },
+	-- lsp client config snippets
+	-- for common lsp servers
 	{
-		'akinsho/bufferline.nvim',
-		dependencies = 'nvim-tree/nvim-web-devicons',
+		"neovim/nvim-lspconfig",
+	},
+
+	-- smallest plugin i"ve found to drive
+	-- autocomplete while typing
+	{
+		"nvimdev/epo.nvim",
+	},
+
+	-- colorscheme
+	{
+		"calind/selenized.nvim",
 		config = function()
-			require("bufferline").setup {}
+			vim.cmd.colorscheme("selenized")
 		end,
 	},
+
+	-- bar with tabs for open buffers
+	{
+		"akinsho/bufferline.nvim",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		config = function()
+			require("bufferline").setup({
+				options = {
+					offsets = {
+						{
+							filetype = "NvimTree",
+							text = "File Explorer",
+							text_align = "left",
+							separator = true
+						}
+					}
+				}
+			})
+		end,
+	},
+
+	-- tree navigator plugin
 	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
+	},
+
+	-- finder plugin
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
-			require("nvim-tree").setup {}
-		end,
+			vim.keymap.set("n", "<C-f>", ":Telescope<CR>", { noremap = true, silent = true })
+		end
 	},
 })
