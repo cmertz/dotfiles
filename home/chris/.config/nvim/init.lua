@@ -2,7 +2,7 @@ require("plugins")
 require("tree")
 require("diagnostics")
 require("lsp")
-require("format")
+require("format_lint")
 require("completion")
 
 local opt = vim.opt

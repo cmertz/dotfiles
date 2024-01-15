@@ -18,7 +18,16 @@ require("lazy").setup({
 		"neovim/nvim-lspconfig",
 	},
 
-	-- smallest plugin i"ve found to drive
+	-- format+lint - has a really nice
+	-- way of configuring (i.e. fluent interface api)
+	{
+		"nvimdev/guard.nvim",
+		dependencies = {
+			"nvimdev/guard-collection",
+		},
+	},
+
+	-- smallest plugin i've found to drive
 	-- autocomplete while typing
 	{
 		"nvimdev/epo.nvim",
