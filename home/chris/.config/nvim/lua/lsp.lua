@@ -23,17 +23,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		vim.api.nvim_clear_autocmds({buffer = event.buf, group = group})
 
-		vim.api.nvim_create_autocmd({"CursorHold", "CursorHoldI"}, {
+		vim.api.nvim_create_autocmd("CursorHold", {
 			group = group,
 			buffer = event.buf,
 			callback = function()
-				if vim.api.nvim_get_mode().mode ~= "n" then
-					return
-				end
-
 				vim.lsp.buf.document_highlight()
 				vim.lsp.buf.hover()
-				vim.diagnostic.open_float()
 			end,
 		})
 

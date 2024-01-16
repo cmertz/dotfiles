@@ -10,6 +10,10 @@ vim.api.nvim_create_autocmd("ModeChanged", {
 	callback = function(e) vim.diagnostic.enable(e.buf) end
 })
 
+vim.api.nvim_create_autocmd("CursorHold", {
+	callback = vim.diagnostic.open_float
+})
+
 vim.diagnostic.config({
 	-- suppress text for errors / warnings
 	virtual_text =  false,
