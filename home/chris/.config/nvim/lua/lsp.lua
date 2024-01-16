@@ -56,3 +56,7 @@ local caps = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilit
 lsp.gopls.setup({
 	capabilities = caps
 })
+
+lsp.marksman.setup({
+	capabilities = caps
+})
