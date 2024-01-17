@@ -1,3 +1,4 @@
+default-timeout=5000
 background-color=#5a5a5a
 border-size=0
 layer=overlay
