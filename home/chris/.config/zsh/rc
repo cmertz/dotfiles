@@ -13,10 +13,10 @@ source $XDG_CONFIG_HOME/zsh/completion.zsh
 source $XDG_CONFIG_HOME/zsh/history.zsh
 source $XDG_CONFIG_HOME/zsh/edit-command-line.zsh
 source $XDG_CONFIG_HOME/zsh/lazy.zsh
+source $XDG_CONFIG_HOME/zsh/p10k.zsh
 source /usr/share/doc/pkgfile/command-not-found.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/zsh-theme-powerlevel10k/config/p10k-lean.zsh
-source $HOME/.p10k.zsh
 
 if [[ `id -u` == 0 ]]
 then
