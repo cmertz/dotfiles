@@ -1,0 +1,346 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+set -o errexit
+set -o nounset
+
+function aur_pkg {
+	arch-chroot -u chris:chris $root /usr/bin/mkdir --parents /home/chris/yay
+	for pkg in "$@"; do
+		arch-chroot -u chris:chris $root /usr/bin/yay -S --noconfirm --builddir=/home/chris/yay $pkg
+	done
+	arch-chroot $root /usr/bin/pacman -Scc --noconfirm
+	arch-chroot $root /usr/bin/rm --recursive --force \
+		/home/chris/yay \
+		/home/chris/pkg \
+		/home/chris/.cache
+}
+
+function pkg {
+	pacstrap -c \
+		-C pacman.conf \
+		$root \
+		"$@"
+
+	arch-chroot $root /usr/bin/pacman -Scc --noconfirm
+	arch-chroot $root /usr/bin/find /etc -name '*.pacnew' -exec rm -f {} \;
+}
+
+function golang_bin {
+	for bin in "$@"; do
+		arch-chroot -u chris:chris $root /usr/bin/go install $bin
+	done
+}
+
+eval set -- "$(getopt --options=v --longoptions=verbose,partition: -- "$@")"
+
+while true; do
+	case $1 in
+	-v | --verbose)
+		shift
+		set -x
+		;;
+
+	--partition)
+		shift
+		partition=$1
+		shift
+		;;
+
+	--)
+		shift
+		break
+		;;
+	esac
+done
+
+esp="/dev/disk/by-partlabel/esp"
+root=/build
+crypto_root_label="crypto-root-$partition"
+verity_label="verity-$partition"
+root_mapper="/dev/mapper/root-$partition"
+
+if [[ -z "$partition" ]]; then
+	echo "partition not set"
+	exit 1
+fi
+
+if [[ ! -e $esp ]]; then
+	echo "esp $esp does not exist"
+	exit 2
+fi
+
+if [[ ! -e /dev/disk/by-partlabel/$crypto_root_label ]]; then
+	echo "/dev/disk/by-partlabel/$crypto_root_label does not exist"
+	exit 3
+fi
+
+if [[ ! -e /dev/disk/by-partlabel/$verity_label ]]; then
+	echo "/dev/disk/by-partlabel/$verity_label does not exist"
+	exit 4
+fi
+
+if [[ ! -e $root_mapper ]]; then
+	echo "$root_mapper does not exist"
+	exit 5
+fi
+
+mkdir --parents $root
+chmod 777 $root
+
+modprobe zram
+
+zramctl /dev/zram0 --algorithm zstd --size 10G
+mkfs.ext2 /dev/zram0
+
+mount /dev/zram0 $root
+
+mkdir --parents $root/boot/efi
+mount $esp $root/boot/efi
+
+cp -r tree/* $root
+
+mkdir $root/etc/cmdline.d --parents
+echo "root=$root_mapper" >$root/etc/cmdline.d/root.conf
+echo "root-$partition	PARTLABEL=$crypto_root_label - fido2-device=auto" >$root/etc/crypttab.initramfs
+
+echo 'chris ALL=(root) NOPASSWD: ALL' >>$root/etc/sudoers
+
+# TODO split up base
+pkg \
+	base \
+	sbctl
+
+arch-chroot $root /usr/bin/sbctl create-keys
+
+# TODO split up base-devel
+pkg \
+	base-devel \
+	curl \
+	git \
+	go
+
+arch-chroot $root bash -e -- <<EOI
+	pacman-key --init
+	pacman-key --populate
+
+	curl -o /tmp/aws-cli-v2-gpg-key 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xfb5db77fd5c118b80511ada8a6310acc4672475c'
+	pacman-key --add /tmp/aws-cli-v2-gpg-key
+
+	locale-gen
+
+	useradd --shell=/usr/bin/zsh chris
+	mkdir --parents /home/chris
+	chown -R chris:chris /home/chris
+	chpasswd <<< chris:nonsense
+
+	chmod 700 /home/chris/.gnupg
+EOI
+
+arch-chroot -u chris:chris $root bash -e -- <<EOI
+	export GOPATH=/home/chris
+
+	mkdir --parents /home/chris/yay
+	cd /home/chris/yay
+
+	curl -fLo PKGBUILD --create-dirs \
+		'https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay'
+
+	makepkg
+
+	sudo pacman --noconfirm -U yay*.pkg.tar.*
+
+	cd /
+
+	rm -rf /home/chris/yay
+EOI
+
+# `gcr` for pinentry-gnome3
+# `gst-plugin-pipewire` for camera support in zoom
+# `sof-firmware` for support of sound on t14s
+# `expect` for interacting with bluetoothctl
+#
+pkg \
+	alacritty \
+	amd-ucode \
+	bitwarden \
+	bluez \
+	bluez-utils \
+	browserpass \
+	browserpass-chromium \
+	browserpass-firefox \
+	ca-certificates \
+	ca-certificates-mozilla \
+	chromium \
+	cryptsetup \
+	cups \
+	docker-buildx \
+	expect \
+	fd \
+	firefox \
+	firefox-tridactyl \
+	firefox-ublock-origin \
+	fzf \
+	gammastep \
+	gcr \
+	github-cli \
+	git-lfs \
+	gnupg \
+	grim \
+	gst-plugin-pipewire \
+	helm \
+	htop \
+	imv \
+	intel-ucode \
+	iwd \
+	jq \
+	kanshi \
+	kubectl \
+	kubectx \
+	libfido2 \
+	libnotify \
+	linux \
+	linux-firmware \
+	mako \
+	man-db \
+	mpv \
+	mpv-mpris \
+	neovim \
+	nmap \
+	nodejs \
+	openssh \
+	pass \
+	packer \
+	pavucontrol \
+	pinentry \
+	pipewire \
+	pipewire-alsa \
+	pipewire-jack \
+	pipewire-pulse \
+	playerctl \
+	powertop \
+	profile-sync-daemon \
+	pyright \
+	python-gobject \
+	python-i3ipc \
+	python-pip \
+	python-pynvim \
+	ruff \
+	runc \
+	sbctl \
+	shellcheck \
+	shfmt \
+	signal-desktop \
+	slurp \
+	sof-firmware \
+	sshfs \
+	sway \
+	swaybg \
+	swayidle \
+	swaylock \
+	syncthing \
+	terraform \
+	thunderbird \
+	tree \
+	ttf-hack-nerd \
+	unzip \
+	upower \
+	waybar \
+	wireguard-tools \
+	wireplumber \
+	wl-clipboard \
+	wofi \
+	wpa_supplicant \
+	xdg-desktop-portal \
+	xdg-desktop-portal-wlr \
+	xdg-user-dirs \
+	xorg-xwayland \
+	yarn \
+	yq \
+	zoxide \
+	zsh \
+	zsh-autosuggestions \
+	zsh-history-substring-search \
+	zsh-syntax-highlighting \
+	libmad \
+	x264 \
+	opus \
+	starship \
+	flac
+
+golang_bin \
+	github.com/ankitpokhrel/jira-cli/cmd/jira@latest \
+	github.com/go-task/task/v3/cmd/task@latest \
+	github.com/synfinatic/aws-sso-cli/cmd/aws-sso@latest \
+	github.com/yannh/kubeconform/cmd/kubeconform@latest \
+	golang.org/x/tools/cmd/goimports@latest \
+	golang.org/x/tools/gopls@latest \
+	mvdan.cc/gofumpt@latest
+
+arch-chroot $root /usr/bin/systemctl enable \
+	iwd \
+	systemd-timesyncd \
+	systemd-resolved \
+	systemd-networkd
+
+arch-chroot -u chris:chris $root /usr/bin/nvim --headless "+Lazy! sync" +qa
+
+aur_pkg \
+	aws-cli-v2 \
+	chromium-extension-privacybadger \
+	chromium-extension-ublock-origin \
+	drawio-desktop-bin \
+	docker-rootless-extra \
+	firefox-extension-privacybadger \
+	fzy \
+	golangci-lint \
+	hadolint-bin \
+	intune-portal-bin \
+	kind \
+	light \
+	marksman-bin \
+	terraform-docs \
+	terraform-ls \
+	tflint-bin \
+	wdisplays \
+	vanta-agent
+
+arch-chroot -u chris:chris $root /usr/bin/tflint --init
+
+sed -i '/chris ALL=(root) NOPASSWD: ALL/d' $root/etc/sudoers
+
+arch-chroot $root bash -e -- <<EOI
+  mkdir /home/chris/.cache
+  mkdir /home/chris/Downloads
+
+  chown -R chris:chris /home/chris/.cache
+  chown -R chris:chris /home/chris/.gnupg
+  chown -R chris:chris /home/chris/Downloads
+EOI
+
+mksquashfs $root $root_mapper \
+	-not-reproducible \
+	-xattrs \
+	-wildcards \
+	-noappend \
+	-comp zstd \
+	-progress \
+	-mem 5G \
+	-b 1M \
+	-e \
+	var/cache/pacman/pkg \
+	var/lib/pacman/sync \
+	var/log/journal \
+	etc/cmdline.d \
+	etc/initcpio \
+	etc/mkinitcpio.d \
+	etc/mkinitcpio.conf \
+	boot/
+
+umount $esp
+umount $root
+
+sync
+
+# TODO
+# systemctl --user enable docker.socket

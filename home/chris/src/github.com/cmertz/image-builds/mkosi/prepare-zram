@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+
+modprobe zram
+
+zramctl /dev/zram0 --algorithm zstd --size 10G
+mkfs.btrfs /dev/zram0
+
+zram_mount=/mnt/zram0
+
+mkdir --parents $zram_mount
+
+mount /dev/zram0 $zram_mount
+
+mkdir --parents $zram_mount/cache
+mkdir --parents $zram_mount/build
+mkdir --parents $zram_mount/work
+chmod --recursive 777 $zram_mount
+
+mkdir --parents $(pwd)/mkosi.cache
+mkdir --parents $(pwd)/mkosi.output
+
+mount --bind $zram_mount/cache $(pwd)/mkosi.cache
+mount --bind $zram_mount/build $(pwd)/mkosi.output
+mount --bind $zram_mount/work ${HOME}/.cache/mkosi

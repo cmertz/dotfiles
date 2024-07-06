@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+
+echo "finalizing /etc/os-release"
+
+echo "VERSION=$(date +%s)" >>${BUILDROOT}/etc/os-release
+echo "VARIANT=A" >>${BUILDROOT}/etc/os-release
+
+source "${BUILDROOT}/etc/os-release"
+echo "PRETTY_NAME=\"${NAME} ${VARIANT} (${VERSION})\"" >>"${BUILDROOT}/etc/os-release"

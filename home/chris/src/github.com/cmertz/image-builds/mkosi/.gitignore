@@ -1,0 +1,14 @@
+# default output directory for
+# build artifcats
+mkosi.output/
+
+# default cache directory
+mkosi.cache/
+
+# key material generated
+# by `mkosi genkey`
+mkosi.key
+mkosi.crt
+
+# passphrase for LUKS containers
+mkosi.passphrase

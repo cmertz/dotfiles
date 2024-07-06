@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+if [ "$1" = "final" ]; then
+	# initialize package manager
+	# keyrings inside the image
+	pacman-key --init
+	pacman-key --populate archlinux
+
+	exit 0
+fi
+
+# refresh package metadata
+pacman --sync --refresh
