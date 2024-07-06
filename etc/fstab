@@ -1,6 +1,0 @@
-/dev/mapper/data /data btrfs rw,noatime,ssd,space_cache=v2,subvolid=5,subvol=/,compress=zstd	0 0
-
-/data/iwd                   /var/lib/iwd                                       none nofail,defaults,bind,x-systemd.requires=data.mount 0 0
-/data/firefox/places.sqlite /home/chris/.mozilla/firefox/default/places.sqlite none nofail,defaults,bind,x-systemd.requires=data.mount 0 0
-/data/thunderbird           /home/chris/.thunderbird                           none nofail,defaults,bind,x-systemd.requires=data.mount 0 0
-/data/chromium              /home/chris/.config/chromium                       none nofail,defaults,bind,x-systemd.requires=data.mount 0 0
