@@ -25,10 +25,7 @@ export PATH=${PATH}:${HOME}/.npm-global/bin
 export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
 
-# ruby
-source /usr/share/chruby/chruby.sh
-
 # circumvent xdg-open errors when trying to lookup x-www-browser
-export BROWSER="firefox:chromium"
+export BROWSER="chromium:firefox"
 
 # vi: ft=zsh

@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+set -x
+
+left=$1
+right=$2
+
+function connect() {
+  local mac=$1
+
+  bluetoothctl -- pair    $mac
+  sleep 1
+
+  bluetoothctl -- trust   $mac
+  sleep 1
+
+  bluetoothctl -- connect $mac
+  sleep 1
+}
+
+bluetoothctl <<EOF
+  agent on
+  default-agent
+  power on
+EOF
+
+connect $left
+connect $right
+
+virtual_sink_name=jbuddies
+
+left_sink=bluez_output.${left//:/_}.1
+right_sink=bluez_output.${right//:/_}.1
+
+pactl load-module module-null-sink media.class=Audio/Sink sink_name=$virtual_sink_name channel_map=stereo
+
+pw-link $virtual_sink_name:monitor_FL $left_sink:playback_FL
+pw-link $virtual_sink_name:monitor_FR $right_sink:playback_FR

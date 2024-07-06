@@ -12,6 +12,23 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+
+	-- markdown preview
+	{
+		"ellisonleao/glow.nvim",
+		config = true,
+		cmd = "Glow"
+	},
+
+	-- comment toggler
+	{
+		"terrortylor/nvim-comment",
+		lazy = false,
+		config = function()
+			require('nvim_comment').setup({create_mappings = false})
+		end,
+	},
+
 	-- lsp client config snippets
 	-- for common lsp servers
 	{
@@ -25,6 +42,14 @@ require("lazy").setup({
 		dependencies = {
 			"nvimdev/guard-collection",
 		},
+	},
+
+	-- symbols outline plugin
+	{
+		"simrat39/symbols-outline.nvim",
+		config = function()
+			require("symbols-outline").setup()
+		end,
 	},
 
 	-- smallest plugin i've found to drive
@@ -71,10 +96,10 @@ require("lazy").setup({
 
 	-- finder plugin
 	{
-		"nvim-telescope/telescope.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		'mfussenegger/nvim-fzy',
 		config = function()
-			vim.keymap.set("n", "<C-f>", ":Telescope<CR>", { noremap = true, silent = true })
+			local fzy = require('fzy')
+			vim.keymap.set("n", "<C-f>", function() fzy.execute('fd -H', fzy.sinks.edit_file) end, { noremap = true, silent = true })
 		end
 	},
 })

@@ -1,0 +1,16 @@
+#!/usr/bin/expect -f
+
+set device "DC:2C:26:0F:18:32"
+
+set timeout 60
+spawn bluetoothctl
+send -- "scan on\r"
+expect "$device"
+send -- "pair $device\r"
+expect "Pairing successful"
+send -- "connect $device\r"
+expect "Connection successful"
+send -- "trust $device\r"
+expect "trust succeeded"
+send -- "exit\r"
+expect eof

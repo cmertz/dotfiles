@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+TryExec=alacritty
+Exec=alacritty
+Icon=Alacritty
+Terminal=false
+Categories=System;TerminalEmulator;
+Name=Terminal
+StartupNotify=true
+StartupWMClass=Alacritty
+X-Desktop-File-Install-Version=0.27

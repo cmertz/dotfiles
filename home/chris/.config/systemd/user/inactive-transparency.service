@@ -1,0 +1,8 @@
+[Unit]
+Description=Sets transparency on inactive windows
+
+[Service]
+ExecStart=/usr/local/lib/inactive-transparency
+
+[Install]
+WantedBy=sway-session.target

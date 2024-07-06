@@ -9,4 +9,3 @@ image/png=imv.desktop;
 text/plain=nvim.desktop;
 x-scheme-handler/magnet=magnet.desktop;
 x-scheme-handler/webcal=thunderbird.desktop;
-x-scheme-handler/msteams=teams.desktop

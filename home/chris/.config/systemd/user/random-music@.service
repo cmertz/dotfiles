@@ -1,0 +1,5 @@
+[Unit]
+OnFailure=notify-failure@%n
+
+[Service]
+ExecStart=/usr/bin/sh -c '/usr/bin/mpv --shuffle --loop-playlist --no-audio-display --script=/usr/local/lib/mpv-notify-id3.lua %I 2>/dev/null >/dev/null'

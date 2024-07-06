@@ -1,8 +1,13 @@
 Defaults env_keep += "HOME"
 Defaults env_keep += "SSH_AUTH_SOCK"
-
+Defaults lecture=never
 Defaults timestamp_type=ppid
+
+Cmnd_Alias POWER = /usr/bin/systemctl poweroff, /usr/bin/systemctl reboot, /usr/bin/systemctl suspend
+Cmnd_Alias BACKLIGHT = /usr/bin/light -A 15, /usr/bin/light -U 15
 
 root ALL=(ALL) ALL
 
-#includedir /etc/sudoers.d
+chris ALL=(root) NOPASSWD: POWER
+chris ALL=(root) NOPASSWD: BACKLIGHT
+chris ALL=(root) ALL

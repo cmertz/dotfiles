@@ -26,7 +26,7 @@ bindsym $mod+Shift+n scratchpad show; floating disable
 
 bindsym $mod+Return exec alacritty
 
-bindsym $mod+r exec --no-startup-id TERMINAL=/usr/bin/alacritty wofi --show drun
+bindsym $mod+r exec --no-startup-id XDG_DATA_DIRS=/home/chris/.local/share TERMINAL=/usr/bin/alacritty wofi --show drun
 
 bindsym $mod+Shift+q kill
 
@@ -100,7 +100,9 @@ exec "hash dbus-update-activation-environment 2>/dev/null; \
      dbus-update-activation-environment --all; \
      dbus-update-activation-environment --systemd; \
      systemctl --user import-environment USER XDG_RUNTIME_DIR DBUS_SESSION_BUS_ADDRESS I3SOCK SWAYSOCK WAYLAND_DISPLAY; \
-     systemctl --user start sway-session.target"
+     systemctl --user start sway-session.target; \
+     systemctl --user start random-background@-data-wallpapers.service"
 
-bindsym --release $mod+l exec --no-startup-id /usr/local/lib/screenlock
+bindsym --release $mod+l exec --no-startup-id /usr/local/lib/sway-lock
+
 bindsym $mod+Print exec --no-startup-id slurp | grim -g -

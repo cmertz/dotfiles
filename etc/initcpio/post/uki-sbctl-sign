@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+uki="$3"
+[[ -n "$uki" ]] || exit 0
+
+exec /usr/bin/sbctl sign "$uki"

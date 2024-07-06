@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# randomly select background images from a
+# folder and use them as sway background
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+folder=$1
+if [[ -z $folder ]]; then
+	echo 'please give a folder with images for the wallpapers as argument' >&2
+	exit 1
+fi
+
+outputs=$(swaymsg --raw --type get_outputs | jq 'map(.name) | join(" ")' | sed 's/"//g')
+wallpapers=$(find $folder -type f | sort --random-sort)
+
+i=1
+for output in $outputs; do
+	wallpaper=$(echo $wallpapers | sed "s/ /\n/g" | tail -n $i | head -n 1)
+	swaymsg output "$output" background $wallpaper fill
+
+	i=$((i + 1))
+done

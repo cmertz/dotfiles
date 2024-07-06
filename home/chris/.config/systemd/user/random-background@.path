@@ -1,0 +1,9 @@
+[Unit]
+Description=Sets random sway backgrounds
+
+[Path]
+PathChanged=%I
+Unit=random-background@.timer
+
+[Install]
+WantedBy=sway-session.target

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+
+case $1 in
+light)
+	sed -i 's/import = .*/import = \[ "~/.config/alacritty/themes/light.toml" ]/' $HOME/.config/alacritty/alacritty.toml
+	;;
+dark)
+	sed -i 's/import = .*/import = \[ "~/.config/alacritty/themes/dark.toml" ]/' $HOME/.config/alacritty/alacritty.toml
+	;;
+*)
+	echo "unknown command $1"
+	exit 1
+	;;
+esac

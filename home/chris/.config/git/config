@@ -11,11 +11,10 @@
   defaultBranch = main
 [commit]
   verbose = 1
+  gpgsign = true
   template = ~/.config/git/commit-message-template
 [filter "lfs"]
   process = git-lfs filter-process
   required = true
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
-[url "git@code.nimel.de:"]
-  insteadOf = https://code.nimel.de/

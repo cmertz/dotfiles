@@ -1,0 +1,53 @@
+#!/usr/bin/python
+
+# requires `i3ipc-python` package (from system package manager or pip)
+
+import i3ipc
+import signal
+import sys
+
+INACTIVE_OPACITY = "0.80"
+ACTIVE_OPACITY = "1"
+
+
+def on_window_focus(_, event):
+    global prev_focused
+
+    focused = event.container
+
+    if (
+        prev_focused is not None and focused.id == prev_focused.id
+    ):  # https://github.com/swaywm/sway/issues/2859
+        return
+
+    focused.command(f"opacity {ACTIVE_OPACITY}")
+    if prev_focused is not None:
+        prev_focused.command(f"opacity {INACTIVE_OPACITY}")
+
+    prev_focused = focused
+
+
+def remove_opacity(ipc):
+    for workspace in ipc.get_tree().workspaces():
+        for w in workspace:
+            w.command(f"opacity {ACTIVE_OPACITY}")
+    ipc.main_quit()
+    sys.exit(0)
+
+
+if __name__ == "__main__":
+    ipc = i3ipc.Connection()
+
+    prev_focused = None
+
+    for window in ipc.get_tree():
+        if window.focused:
+            prev_focused = window
+        else:
+            window.command(f"opacity {INACTIVE_OPACITY}")
+
+    for sig in [signal.SIGINT, signal.SIGTERM]:
+        signal.signal(sig, lambda sig, frame: remove_opacity(ipc))
+
+    ipc.on("window::focus", on_window_focus)
+    ipc.main()

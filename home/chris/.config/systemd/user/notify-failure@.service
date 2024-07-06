@@ -1,0 +1,2 @@
+[Service]
+ExecStart=/usr/bin/notify-send -u critical -t 7000 failed "%I"

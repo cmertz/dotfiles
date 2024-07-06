@@ -7,6 +7,8 @@ require("completion")
 
 local opt = vim.opt
 
+opt.clipboard = "unnamedplus"
+
 -- 24bit term colors
 vim.o.termguicolors = true
 
@@ -26,9 +28,10 @@ vim.cmd[[highlight SignColumn guibg=NONE]]
 
 opt.ttyfast = true
 
--- disable backup files
+-- disable backup and swap files
 opt.backup = false
 opt.writebackup = false
+opt.swapfile = false
 
 -- show line numbers
 -- TODO adapt color of numbers column
@@ -79,3 +82,8 @@ map("n", "<C-q>", "<ESC>:qall<cr>")
 map("n", "<C-s>", "<ESC>:w<cr>")
 map("n", "<C-Tab>", "<ESC>:bn<cr>")
 map("n", "<C-S-Tab>", "<ESC>:bp<cr>")
+map("v", "<C-/>", "<ESC>:'<,'>CommentToggle<cr>")
+map("n", "<C-/>", "<ESC>:CommentToggle<cr>")
+
+-- i keep hitting `F1` by accident on some keyboards ...
+map("n", "<F1>", "<nop>")

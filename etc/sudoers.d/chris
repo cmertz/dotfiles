@@ -1,9 +1,0 @@
-Cmnd_Alias POWER     = /usr/bin/systemctl poweroff, /usr/bin/systemctl reboot, /usr/bin/systemctl suspend
-Cmnd_Alias UPDATE    = /usr/bin/pacman -Syyu --noconfirm, /usr/bin/yay -Syyu --noconfirm
-Cmnd_Alias BACKLIGHT = /usr/bin/light -A 15, /usr/bin/light -U 15
-
-chris ALL=(ALL)  ALL
-chris ALL=(root) NOPASSWD: POWER
-chris ALL=(root) NOPASSWD: UPDATE
-chris ALL=(root) NOPASSWD: BACKLIGHT
-chris ALL=(root) NOPASSWD: /usr/bin/psd-overlay-helper

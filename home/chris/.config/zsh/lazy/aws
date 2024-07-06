@@ -1,1 +1,15 @@
-source /usr/bin/aws_zsh_completer.sh
+fzf_aws_prof() {
+  profile=$(grep -e '^.profile' ~/.aws/config | awk -F"[][]" '{print $2}' | sed 's/^profile //' | fzf +s --tac)
+  BUFFER="export AWS_PROFILE=${profile}"; zle end-of-line;
+}
+
+zle -N awsprof fzf_aws_prof
+bindkey '^b' awsprof
+
+# convenience
+export AWS_DEFAULT_REGION=eu-central-1
+
+if [[ -f /usr/bin/aws_zsh_completer.sh ]]
+then
+  source /usr/bin/aws_zsh_completer.sh
+fi

@@ -1,5 +1,6 @@
-if [[ -r "${HOME}/.cache/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${HOME}/.cache/p10k-instant-prompt-${(%):-%n}.zsh"
+# autostart sway on first tty
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+	exec systemd-cat --identifier=sway sway
 fi
 
 # emacs mode
@@ -11,25 +12,24 @@ bindkey '^[[3~' delete-char
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $XDG_CONFIG_HOME/zsh/completion.zsh
 source $XDG_CONFIG_HOME/zsh/history.zsh
+source $XDG_CONFIG_HOME/zsh/select-aws-profile.zsh
 source $XDG_CONFIG_HOME/zsh/edit-command-line.zsh
 source $XDG_CONFIG_HOME/zsh/lazy.zsh
-source $XDG_CONFIG_HOME/zsh/p10k.zsh
-source /usr/share/doc/pkgfile/command-not-found.zsh
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-source /usr/share/zsh-theme-powerlevel10k/config/p10k-lean.zsh
 
-if [[ `id -u` == 0 ]]
-then
-  export _ZO_DATA_DIR=/root/.local/share
+if [[ `id -u` == 0 ]]; then
+	export _ZO_DATA_DIR=/root/.local/share
 fi
 eval "$(zoxide init zsh)"
 
-# autostart sway on first tty
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-    exec sway
+# fix pinentry for gpg when not on
+# alacritty - when we need a console
+# pinentry
+if [[ $TERM != "alacritty" ]]; then
+	gpg-connect-agent updatestartuptty /bye > /dev/null
 fi
 
-# fix pinentry for gpg
-gpg-connect-agent updatestartuptty /bye > /dev/null
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+
+eval "$(starship init zsh)"
 
 # vi: ft=zsh
