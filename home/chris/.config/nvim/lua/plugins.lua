@@ -13,6 +13,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 
+	 {
+		 "junegunn/vim-easy-align"
+	 },
 	-- markdown preview
 	{
 		"ellisonleao/glow.nvim",

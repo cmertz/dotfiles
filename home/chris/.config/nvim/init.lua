@@ -25,6 +25,7 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
 opt.signcolumn = 'yes'
 -- TODO figure out why this is ignored
 vim.cmd[[highlight SignColumn guibg=NONE]]
+vim.cmd[[set background=light]]
 
 opt.ttyfast = true
 
