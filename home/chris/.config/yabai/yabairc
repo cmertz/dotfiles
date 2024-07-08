@@ -1,0 +1,13 @@
+yabai -m config layout bsp
+
+yabai -m rule --add app='System Settings' manage=off
+
+yabai -m config mouse_follows_focus on
+yabai -m config focus_follows_mouse autoraise
+
+# give windows a minimum amount of privacy
+yabai -m config top_padding    2
+yabai -m config bottom_padding 2
+yabai -m config left_padding   2
+yabai -m config right_padding  2
+yabai -m config window_gap     2
