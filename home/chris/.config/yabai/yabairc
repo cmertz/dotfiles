@@ -2,6 +2,7 @@ yabai -m config layout bsp
 
 yabai -m rule --add app='System Settings' manage=off
 
+# point focus
 yabai -m config mouse_follows_focus on
 yabai -m config focus_follows_mouse autoraise
 

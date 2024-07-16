@@ -1,25 +1,19 @@
 # terminal emulator
 alt - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
 
-# fullscreen
+# general commands for windows
 alt - f : yabai -m window --toggle zoom-fullscreen
-
-# minimize
 alt - n : yabai -m window --minimize
 
 # toggle point focus
 alt - p : if [[ $(yabai -m config focus_follows_mouse) == "autoraise" ]]; then yabai -m config focus_follows_mouse off; else yabai -m config focus_follows_mouse autoraise; fi
-
-# switch to displays
-ctrl - 1 : yabai -m display --focus 1
-ctrl - 2 : yabai -m display --focus 2
-ctrl - 3 : yabai -m display --focus 3
 
 # switch windows on same screen
 alt - w : yabai -m window --focus north
 alt - a : yabai -m window --focus west
 alt - s : yabai -m window --focus south
 alt - d : yabai -m window --focus east
+
 
 # move windows on same screen
 alt + shift - w : yabai -m window --warp north
