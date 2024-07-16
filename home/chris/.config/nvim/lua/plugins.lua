@@ -12,10 +12,31 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+	{
+		'nvim-lualine/lualine.nvim',
+		dependencies = { 'nvim-tree/nvim-web-devicons' },
+		config = function()
+            require("lualine").setup({
+                options =  {
+					-- gruvbox is a bit suboptimal the solarized variants
+					-- have some problems with the diagnostics bg though
+					theme = 'gruvbox',
+                    disabled_filetypes = { 'NvimTree' },
+                    component_separators = '',
+                    section_separators = '',
+                },
+				sections = {
+                    lualine_c = {},
+                    lualine_z = {},
+                }
+            })
+		end
+	},
 
-	 {
-		 "junegunn/vim-easy-align"
-	 },
+	{
+		"junegunn/vim-easy-align"
+	},
+
 	-- markdown preview
 	{
 		"ellisonleao/glow.nvim",
@@ -65,6 +86,7 @@ require("lazy").setup({
 	{
 		"calind/selenized.nvim",
 		config = function()
+            vim.opt.background = "light"
 			vim.cmd.colorscheme("selenized")
 		end,
 	},

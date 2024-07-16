@@ -1,31 +1,16 @@
 require("plugins")
 require("tree")
-require("diagnostics")
+require("completion")
 require("lsp")
 require("format_lint")
-require("completion")
+require("diagnostics")
 
 local opt = vim.opt
 
 opt.clipboard = "unnamedplus"
 
 -- 24bit term colors
-vim.o.termguicolors = true
-
--- give `hover` floats a border so
--- they are distinguishable from the rest
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-  vim.lsp.handlers.hover, {
-    border = "single",
-	focus = false,
-  }
-)
-
--- column for signs at the left
-opt.signcolumn = 'yes'
--- TODO figure out why this is ignored
-vim.cmd[[highlight SignColumn guibg=NONE]]
-vim.cmd[[set background=light]]
+opt.termguicolors = true
 
 opt.ttyfast = true
 
@@ -35,8 +20,8 @@ opt.writebackup = false
 opt.swapfile = false
 
 -- show line numbers
--- TODO adapt color of numbers column
 opt.number = true
+vim.cmd[[ highlight LineNr guibg=NONE ]]
 
 -- break on specific chars only
 opt.linebreak = true
@@ -69,6 +54,10 @@ opt.fillchars = {eob = " "}
 opt.spelllang = "en_us"
 opt.spell = false
 
+-- column for signs at the left
+opt.signcolumn = 'yes'
+vim.cmd[[ highlight SignColumn guibg=NONE ]]
+
 -- remove trailing whitespaces
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*" },
@@ -88,3 +77,4 @@ map("n", "<C-/>", "<ESC>:CommentToggle<cr>")
 
 -- i keep hitting `F1` by accident on some keyboards ...
 map("n", "<F1>", "<nop>")
+
