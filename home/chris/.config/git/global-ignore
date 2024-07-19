@@ -1,0 +1,8 @@
+# macos
+.DS_Store
+
+# intellij
+.idea/
+
+# direnv
+.envrc
