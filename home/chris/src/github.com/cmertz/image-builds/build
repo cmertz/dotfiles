@@ -180,6 +180,7 @@ pkg \
 	firefox \
 	firefox-tridactyl \
 	firefox-ublock-origin \
+	flac
 	fzf \
 	gammastep \
 	gcr \
@@ -198,6 +199,7 @@ pkg \
 	kubectl \
 	kubectx \
 	libfido2 \
+	libmad \
 	libnotify \
 	linux \
 	linux-firmware \
@@ -209,8 +211,10 @@ pkg \
 	nmap \
 	nodejs \
 	openssh \
-	pass \
+	opus \
 	packer \
+	pass \
+	pass-otp \
 	pavucontrol \
 	pinentry \
 	pipewire \
@@ -234,6 +238,7 @@ pkg \
 	slurp \
 	sof-firmware \
 	sshfs \
+	starship \
 	sway \
 	swaybg \
 	swayidle \
@@ -251,22 +256,19 @@ pkg \
 	wl-clipboard \
 	wofi \
 	wpa_supplicant \
+	x264 \
 	xdg-desktop-portal \
 	xdg-desktop-portal-wlr \
 	xdg-user-dirs \
 	xorg-xwayland \
 	yarn \
 	yq \
+	zbar \
 	zoxide \
 	zsh \
 	zsh-autosuggestions \
 	zsh-history-substring-search \
 	zsh-syntax-highlighting \
-	libmad \
-	x264 \
-	opus \
-	starship \
-	flac
 
 golang_bin \
 	github.com/ankitpokhrel/jira-cli/cmd/jira@latest \
