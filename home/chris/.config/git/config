@@ -1,20 +1,31 @@
 [color]
-  diff = always
-  ui = auto
+	diff = always
+	ui = auto
+
 [alias]
-  st = status
-  co = checkout
+	st = status
+	co = checkout
+
 [pull]
-  rebase = true
+	rebase = true
+
 [init]
-  templatedir = ~/.config/git/templates
-  defaultBranch = main
+	templatedir = ~/.config/git/templates
+	defaultBranch = main
+
+[core]
+	excludesfile = ~/.config/git/global-ignore
+
 [commit]
-  verbose = 1
-  gpgsign = true
-  template = ~/.config/git/commit-message-template
+	verbose = 1
+	gpgsign = true
+	template = ~/.config/git/commit-message-template
+
 [filter "lfs"]
-  process = git-lfs filter-process
-  required = true
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+
+[include]
+	path = ~/.config/git/machine-specific-config
