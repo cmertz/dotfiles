@@ -1,6 +1,11 @@
 -- time it takes to trigger the `CursorHold` event
 vim.opt.updatetime = 400
 
+-- lsp log seems to grow unbounded
+-- we can still turn it on when actually
+-- needed
+vim.lsp.set_log_level("off")
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP actions",
 	callback = function(event)
