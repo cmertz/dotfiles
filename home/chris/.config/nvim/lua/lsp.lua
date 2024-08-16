@@ -26,6 +26,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end
 })
 
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+	vim.lsp.diagnostic.on_publish_diagnostics, {
+		virtual_text = false,
+		underline = true,
+		signs = true,
+	}
+)
+
 -- actual lsp client setup
 local lsp = require("lspconfig")
 local caps = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), require("epo").register_cap())

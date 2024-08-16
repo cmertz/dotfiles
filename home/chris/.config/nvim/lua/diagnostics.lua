@@ -11,7 +11,20 @@ vim.api.nvim_create_autocmd("ModeChanged", {
 })
 
 vim.api.nvim_create_autocmd("CursorHold", {
-	callback = vim.diagnostic.open_float
+	desc = "Setup diagnostics",
+	callback = function(event)
+        vim.diagnostic.open_float(0, {
+          scope = "cursor",
+          focusable = false,
+          close_events = {
+            "CursorMoved",
+            "CursorMovedI",
+            "BufHidden",
+            "InsertCharPre",
+            "WinLeave",
+          },
+        })
+	end
 })
 
 vim.diagnostic.config({
@@ -27,6 +40,7 @@ vim.diagnostic.config({
 		focusable = false,
 		focus = false,
 	},
+
 	signs = {
 		text = {
 			[vim.diagnostic.severity.ERROR] = "✘",
@@ -36,3 +50,7 @@ vim.diagnostic.config({
 		},
 	},
 })
+
+for _, v in ipairs( {"DiagnosticError", "DiagnosticWarn", "DiagnosticInfo", "DiagnosticHint", "DiagnosticOk"}) do
+    vim.cmd("highlight " .. v .. " guibg=NONE ")
+end
