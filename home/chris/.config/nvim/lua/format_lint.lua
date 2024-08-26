@@ -3,7 +3,7 @@ local ft = require('guard.filetype')
 ft('go'):fmt({
 	cmd = 'goimports',
 	stdin = true
-}):append('gofumpt'):lint('golangci_lint')
+}):append('gofumpt')
 ft('sh'):fmt('shfmt'):lint('shellcheck')
 ft('dockerfile'):lint('hadolint')
 ft('python'):fmt('ruff'):lint('ruff')
