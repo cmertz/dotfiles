@@ -1,3 +1,6 @@
+add_newline = false
+continuation_prompt = '▶▶ '
+
 format = """
 $username\
 $hostname\
@@ -8,6 +11,19 @@ $git_status\
 $cmd_duration\
 $python\
 $character"""
+
+right_format = """
+$kubernetes \
+$aws"""
+
+[aws]
+format = '[$symbol($profile )(\($region\) )(\[$duration\] )]($style)'
+style = 'dimmed yellow'
+
+[kubernetes]
+disabled = false
+format = '[$symbol$context( \($namespace\))]($style)'
+style = 'dimmed cyan'
 
 [directory]
 style = "blue"
