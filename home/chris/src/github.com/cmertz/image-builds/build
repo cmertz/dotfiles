@@ -268,7 +268,7 @@ pkg \
 	zsh \
 	zsh-autosuggestions \
 	zsh-history-substring-search \
-	zsh-syntax-highlighting \
+	zsh-syntax-highlighting
 
 golang_bin \
 	github.com/ankitpokhrel/jira-cli/cmd/jira@latest \
@@ -304,8 +304,7 @@ aur_pkg \
 	terraform-docs \
 	terraform-ls \
 	tflint-bin \
-	wdisplays \
-	vanta-agent
+	wdisplays
 
 arch-chroot -u chris:chris $root /usr/bin/tflint --init
 
