@@ -104,5 +104,6 @@ exec "hash dbus-update-activation-environment 2>/dev/null; \
      systemctl --user start random-background@-data-wallpapers.service"
 
 bindsym --release $mod+l exec --no-startup-id /usr/local/lib/sway-lock
+bindsym --release $mod+b exec --no-startup-id PATH=/usr/local/lib/bluetooth /usr/bin/wofi --show run --prompt "Connect to Bluetooth"
 
 bindsym $mod+Print exec --no-startup-id slurp | grim -g -

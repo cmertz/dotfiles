@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+/usr/bin/bluetoothctl connect 00:23:18:01:FE:DC

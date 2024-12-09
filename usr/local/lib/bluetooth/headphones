@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+/usr/bin/bluetoothctl connect AC:80:0A:E4:69:48
