@@ -77,4 +77,3 @@ map("n", "<C-/>", "<ESC>:CommentToggle<cr>")
 
 -- i keep hitting `F1` by accident on some keyboards ...
 map("n", "<F1>", "<nop>")
-
