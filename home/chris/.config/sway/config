@@ -24,9 +24,9 @@ bindsym XF86MonBrightnessDown exec --no-startup-id sudo /usr/bin/light -U 15
 bindsym $mod+n move  scratchpad
 bindsym $mod+Shift+n scratchpad show; floating disable
 
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec ghostty
 
-bindsym $mod+r exec --no-startup-id XDG_DATA_DIRS=/home/chris/.local/share TERMINAL=/usr/bin/alacritty wofi --show drun
+bindsym $mod+r exec --no-startup-id TERMINAL=/usr/bin/ghostty wofi --show drun
 
 bindsym $mod+Shift+q kill
 

@@ -1,0 +1,7 @@
+font-family = "Hack Nerd Font"
+window-decoration = false
+cursor-style-blink = false
+cursor-style = "block"
+shell-integration-features = no-cursor
+# theme = light:GruvboxLight,dark:GruvboxDark
+theme = dark:GruvboxDark,light:GruvboxLight
