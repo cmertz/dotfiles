@@ -26,7 +26,7 @@ bindsym $mod+Shift+n scratchpad show; floating disable
 
 bindsym $mod+Return exec ghostty
 
-bindsym $mod+r exec --no-startup-id TERMINAL=/usr/bin/ghostty wofi --show drun
+bindsym $mod+space exec --no-startup-id TERMINAL=/usr/bin/ghostty wofi --show drun
 
 bindsym $mod+Shift+q kill
 
@@ -44,10 +44,6 @@ bindsym $mod+Shift+d move right
 bindsym $mod+h split h
 bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
-bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
 
 set $ws1  "1"
 set $ws2  "2"
