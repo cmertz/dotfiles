@@ -174,19 +174,22 @@ pkg \
 	chromium \
 	cryptsetup \
 	cups \
+	darkman \
 	docker-buildx \
 	expect \
 	fd \
 	firefox \
 	firefox-tridactyl \
 	firefox-ublock-origin \
-	flac
+	flac \
 	fzf \
 	gammastep \
 	gcr \
 	github-cli \
 	git-lfs \
 	gnupg \
+	gofumpt \
+	gopls \
 	grim \
 	gst-plugin-pipewire \
 	helm \
@@ -210,6 +213,7 @@ pkg \
 	neovim \
 	nmap \
 	nodejs \
+	obsidian \
 	openssh \
 	opus \
 	packer \
@@ -263,6 +267,7 @@ pkg \
 	xorg-xwayland \
 	yarn \
 	yq \
+	yt-dlp \
 	zbar \
 	zoxide \
 	zsh \
@@ -275,9 +280,7 @@ golang_bin \
 	github.com/go-task/task/v3/cmd/task@latest \
 	github.com/synfinatic/aws-sso-cli/cmd/aws-sso@latest \
 	github.com/yannh/kubeconform/cmd/kubeconform@latest \
-	golang.org/x/tools/cmd/goimports@latest \
-	golang.org/x/tools/gopls@latest \
-	mvdan.cc/gofumpt@latest
+	golang.org/x/tools/cmd/goimports@latest
 
 arch-chroot $root /usr/bin/systemctl enable \
 	iwd \
@@ -291,11 +294,12 @@ aur_pkg \
 	aws-cli-v2 \
 	chromium-extension-privacybadger \
 	chromium-extension-ublock-origin \
-	drawio-desktop-bin \
 	docker-rootless-extra \
+	drawio-desktop-bin \
 	firefox-extension-privacybadger \
 	fzy \
 	golangci-lint \
+	golangci-lint-bin \
 	hadolint-bin \
 	intune-portal-bin \
 	kind \
@@ -304,6 +308,7 @@ aur_pkg \
 	terraform-docs \
 	terraform-ls \
 	tflint-bin \
+	timg \
 	wdisplays
 
 arch-chroot -u chris:chris $root /usr/bin/tflint --init
