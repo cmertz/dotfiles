@@ -1,7 +1,28 @@
-font-family = "Hack Nerd Font"
+# clipboard
+clipboard-paste-protection = false
+clipboard-read = allow
+clipboard-write = allow
+copy-on-select = clipboard
+
+# desktop integration
+desktop-notifications = false
+quit-after-last-window-closed = true
 window-decoration = false
+linux-cgroup = always
+
+# styling
 cursor-style-blink = false
 cursor-style = "block"
-shell-integration-features = no-cursor
-# theme = light:GruvboxLight,dark:GruvboxDark
+custom-shader-animation = true
+font-family = "Hack Nerd Font"
+shell-integration-features = sudo,title,no-cursor
+term = linux
 theme = dark:GruvboxDark,light:GruvboxLight
+
+# keybindings
+keybind = ctrl+down=jump_to_prompt:1
+keybind = ctrl+up=jump_to_prompt:-1
+# I use <ctrl>+<tab> for `nvim` so those need to
+# be passed to the process in the terminal emulator
+keybind = ctrl+tab=unbind
+keybind = ctrl+shift+tab=unbind
