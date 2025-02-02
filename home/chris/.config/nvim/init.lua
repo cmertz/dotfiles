@@ -18,6 +18,7 @@ opt.ttyfast = true
 opt.backup = false
 opt.writebackup = false
 opt.swapfile = false
+opt.directory = ""
 
 -- show line numbers
 opt.number = true
