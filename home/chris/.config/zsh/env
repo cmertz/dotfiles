@@ -28,4 +28,6 @@ export PATH=$PATH:$GOPATH/bin
 # circumvent xdg-open errors when trying to lookup x-www-browser
 export BROWSER="chromium:firefox"
 
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+
 # vi: ft=zsh

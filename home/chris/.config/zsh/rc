@@ -28,8 +28,8 @@ if [[ $TERM != "alacritty" ]]; then
 	gpg-connect-agent updatestartuptty /bye > /dev/null
 fi
 
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
-
 eval "$(starship init zsh)"
+
+alias ls='eza --icons'
 
 # vi: ft=zsh

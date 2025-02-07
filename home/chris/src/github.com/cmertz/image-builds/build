@@ -177,6 +177,7 @@ pkg \
 	darkman \
 	docker-buildx \
 	expect \
+	eza \
 	fd \
 	firefox \
 	firefox-tridactyl \
