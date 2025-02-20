@@ -9,27 +9,111 @@ bindkey -e
 # `delete` key
 bindkey '^[[3~' delete-char
 
+# make `ctrl-d` work when partial command is typed already
+exit_zsh() { exit }
+zle -N exit_zsh
+bindkey '^D' exit_zsh
+
+# close idle shells after 30min
+export TMOUT=1800
+readonly TMOUT
+export TMOUT
+
+# fuzzy select aws profiles
+function fzf_aws_prof {
+	local output
+	output=$(grep -e '^.profile' $HOME/.aws/config | awk -F"[][]" '{print $2}' |while read a p ; do echo "AWS_PROFILE=$p" ; done | fzf +s --tac) || return
+
+	BUFFER="export $output"
+	zle end-of-line
+}
+
+zle -N awsprof fzf_aws_prof
+bindkey '^b' awsprof
+
+function ls {
+	eza --icons $@
+}
+
+# fish like autosuggestions from history
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $XDG_CONFIG_HOME/zsh/completion.zsh
-source $XDG_CONFIG_HOME/zsh/history.zsh
-source $XDG_CONFIG_HOME/zsh/select-aws-profile.zsh
-source $XDG_CONFIG_HOME/zsh/edit-command-line.zsh
-source $XDG_CONFIG_HOME/zsh/lazy.zsh
 
-if [[ `id -u` == 0 ]]; then
-	export _ZO_DATA_DIR=/root/.local/share
+autoload -Uz compinit
+if [[ -n ${HOME}/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
 fi
-eval "$(zoxide init zsh)"
 
-# fix pinentry for gpg when not on
-# alacritty - when we need a console
-# pinentry
-if [[ $TERM != "alacritty" ]]; then
+# from https://thevaluable.dev/zsh-completion-guide-examples/
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ${HOME}/.cache/zsh/.zcompcache
+zstyle ':completion:*' completer _extensions _expand_alias _complete
+zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' file-list all
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' squeeze-slashes true
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+
+# `alt-e`
+bindkey '^[e' edit-command-line
+
+setopt hist_ignore_all_dups
+setopt share_history
+setopt inc_append_history
+setopt hist_verify
+setopt hist_ignore_space
+
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
+export HISTFILE=${XDG_CONFIG_HOME}/zsh/history
+export HISTSIZE=10000
+export SAVEHIST=10000
+export HISTORY_IGNORE="(cd|z|zi|mpv|h|yt-dlp)"
+
+alias h='history 1'
+
+# Create dynamic proxy functions that will delete themselves upon
+# first invocation. This can be useful to source heavy things like
+# completions in a lazy manner.
+#
+# inspired by
+#   https://frederic-hemberger.de/notes/shell/speed-up-initial-zsh-startup-with-lazy-loading/
+#
+
+readonly _proxy_dir=$XDG_CONFIG_HOME/zsh/lazy
+
+# make non-matching glob a noop
+setopt null_glob
+
+for cmd in $_proxy_dir/*
+do
+  # create a function with the filename
+  function $(basename $cmd) {
+    unfunction $0
+    source $_proxy_dir/$0
+    $0 "$@"
+  }
+done
+
+unsetopt null_glob
+
+# fix pinentry for gpg when not in our default
+# terminal emulator
+if [[ $TERM_PROGRAM != "ghostty" ]]; then
 	gpg-connect-agent updatestartuptty /bye > /dev/null
 fi
 
+eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
-
-alias ls='eza --icons'
-
 # vi: ft=zsh
