@@ -1,5 +1,5 @@
 # terminal emulator
-alt - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
+alt - return : open -n "/Applications/Ghostty.app"
 
 # general commands for windows
 alt - f : yabai -m window --toggle zoom-fullscreen
