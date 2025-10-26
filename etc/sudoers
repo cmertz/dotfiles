@@ -8,6 +8,8 @@ Cmnd_Alias BACKLIGHT = /usr/bin/light -A 15, /usr/bin/light -U 15
 
 root ALL=(ALL) ALL
 
+chris ALL=(root) ALL
 chris ALL=(root) NOPASSWD: POWER
 chris ALL=(root) NOPASSWD: BACKLIGHT
-chris ALL=(root) ALL
+chris ALL=(root) NOPASSWD: /usr/bin/light -A 15
+chris ALL=(root) NOPASSWD: /usr/bin/light -U 15
