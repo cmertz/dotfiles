@@ -17,7 +17,7 @@
 	excludesfile = ~/.config/git/global-ignore
 
 [commit]
-	verbose = 1
+	verbose = true
 	gpgsign = true
 	template = ~/.config/git/commit-message-template
 
@@ -29,3 +29,49 @@
 
 [include]
 	path = ~/.config/git/machine-specific-config
+
+[gpg]
+	format = ssh
+
+[user]
+	signingkey = /home/chris/.ssh/cmertz@users.noreply.github.com.id_ed25519.pub
+
+[merge]
+	conflictstyle = zdiff3
+
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
+
+[rerere]
+	enabled = true
+	autoupdate = true
+
+[help]
+	autocorrect = prompt
+
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+
+[push]
+	autoSetupRemote = true
+	followTags = true
+	default = simple
+
+[diff]
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+	algorithm = histogram
+
+[tag]
+	sort = version:refname
+
+[column]
+	ui = auto
+
+[branch]
+	sort = -committerdate

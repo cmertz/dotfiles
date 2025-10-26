@@ -1,31 +1,14 @@
-profile {
+profile dock {
 	output eDP-1 disable
-	output "Samsung Electric Company SyncMaster H9MZ112325" mode 1920x1080 transform 90 position 0,0
-	output "Dell Inc. DELL S2722QC HG3PLD3" mode 3840x2160@60 position 1080,0
+	output "Dell Inc. DELL S2722QC HG3PLD3" enable position 0,0
 
 	exec /usr/local/lib/sway-random-background /data/wallpapers
-	exec swapmsg workspace 1
+	exec swaymsg 'workspace --no-auto-back-and-forth 1'
 }
 
-profile {
-	output eDP-1 enable position 1080,0
-	output "Samsung Electric Company SyncMaster H9MZ112325" mode 1920x1080 transform 90 position 0,0
-
-	exec /usr/local/lib/sway-random-background /data/wallpapers
-	exec swapmsg workspace 1
-}
-
-profile {
-	output eDP-1 disable
-	output "Dell Inc. DELL S2722QC HG3PLD3" mode 3840x2160@60 position 0,0
-
-	exec /usr/local/lib/sway-random-background /data/wallpapers
-	exec swapmsg workspace 1
-}
-
-profile {
+profile standalone {
 	output eDP-1 enable
 
 	exec /usr/local/lib/sway-random-background /data/wallpapers
-	exec swapmsg workspace 1
+	exec swaymsg 'workspace --no-auto-back-and-forth 1'
 }

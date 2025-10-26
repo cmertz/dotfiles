@@ -12,14 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    {
-      "zbirenbaum/copilot.lua",
-      cmd = "Copilot",
-	  event = "InsertEnter",
-      config = function()
-        require("copilot").setup({})
-      end,
-    },
 	{
 		'nvim-lualine/lualine.nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },

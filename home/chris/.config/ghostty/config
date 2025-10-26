@@ -17,7 +17,7 @@ custom-shader-animation = true
 font-family = "Hack Nerd Font"
 shell-integration-features = sudo,title,no-cursor
 term = linux
-theme = dark:GruvboxDark,light:GruvboxLight
+theme = dark:Gruvbox Dark,light:Gruvbox Light
 
 # keybindings
 keybind = ctrl+down=jump_to_prompt:1

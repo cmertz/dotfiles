@@ -68,10 +68,18 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 local lsp = require("lspconfig")
 local caps = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), require("epo").register_cap())
 
--- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { "pyright", "gopls", "terraformls", "tflint", "marksman" }
-for _, l in ipairs(servers) do
-	lsp[l].setup({
-		capabilities = caps
-	})
-end
+lsp.gopls.setup({
+	capabilities = caps
+})
+
+lsp.marksman.setup({
+	capabilities = caps
+})
+
+lsp.pyright.setup({
+	capabilities = caps
+})
+
+lsp.terraformls.setup({
+	capabilities = caps
+})
